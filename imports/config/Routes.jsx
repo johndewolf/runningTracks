@@ -11,7 +11,7 @@ export const renderRoutes = () => (
   	<Route path='/' component={App}>
   		<IndexRoute component={Home} />
   		<Route path='quick' component={CreatePlaylistContainer} />
-  		<Route path='quick/results' component={PlaylistResultsContainer}/>
+  		<Route path='quick/results' component={PlaylistResultsContainer} />
 		</Route>
   </Router>
  );

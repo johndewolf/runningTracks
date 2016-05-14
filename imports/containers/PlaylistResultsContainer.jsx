@@ -12,14 +12,23 @@ class PlaylistResultsContainer extends Component {
       tempo: "",
       time: "",
       genre: "",
-      isLoading: true
+      isLoading: true,
+      showImport: false
     };
+  }
+
+  handleImportClick() {
+    var app = this;
+    app.setState({
+      showImport: true
+    })
   }
 
   componentDidMount() {
     var app = this;
 
     Meteor.call('getSpotifyTracks', app.props.location.state.genre, app.props.location.state.tempo, app.props.location.state.time, function(error, result) {
+
       if (result) {
           app.setState({
             spotifyData: result,
@@ -31,7 +40,7 @@ class PlaylistResultsContainer extends Component {
         }
         else {
           app.setState({
-            spotifyData: "Please re-apply",
+            spotifyData: "Please login re-apply",
             isLoading: false
           })
         }
@@ -45,7 +54,9 @@ class PlaylistResultsContainer extends Component {
         spotifyData={this.state.spotifyData}
         tempo={this.state.tempo}
         time={this.state.time}
-        genre={this.state.genre} />
+        genre={this.state.genre}
+        showImport={this.state.showImport}
+        onImportClick={this.handleImportClick.bind(this)} />
     )
   }
 }

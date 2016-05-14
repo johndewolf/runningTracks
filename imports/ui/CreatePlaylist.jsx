@@ -15,11 +15,16 @@ const CreatePlaylist = ({onPlaylistSubmit, onUpdateTempo, onUpdateGenre, onUpdat
 						<option value="0.7|1">High</option>
 					</select>
 				</div>
+				<p>{time || 0} minutes</p>
 				<div className="form-group">
 					<input
 						className='form-control'
 						placeholder='Goal Time'
-						type='text'
+						type='range'
+						defaultValue='0'
+						step='1'
+						min='2'
+						max='60'
 						required
 						onChange={onUpdateTime} />
 				</div>
@@ -46,4 +51,11 @@ CreatePlaylist.propTypes = {
 	onUpdateGenre: PropTypes.func.isRequired
 }
 
+/*
+Multiple genres,
+genre type ahead,
+more search options
+energy level range
+export playlist to spotify
+*/
 export default CreatePlaylist
