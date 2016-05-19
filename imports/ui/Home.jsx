@@ -26,7 +26,7 @@ class Home extends Component {
   spotifyLogin() {
     var options = {
       showDialog: true,
-      requestPermissions: ['user-read-email', 'playlist-modify-public']
+      requestPermissions: ['user-read-email', 'playlist-modify-public', 'playlist-modify-private']
     };
     Meteor.loginWithSpotify(options, function(err) {
       if (err) {

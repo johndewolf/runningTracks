@@ -7,15 +7,14 @@ class ImportPlaylistContainer extends Component {
     this.state = {
       tracks: "",
       playlistName: "",
-      playlistSubmitted: false
+      playlistSubmitted: false,
+      returnData: ""
     }
   }
 
   componentDidMount() {
   	this.setState({
-  		tracks: this.props.spotifyData.map(function(track,i) {
-				return <li key={i}><b>{track.artists[0].name}</b> - {track.name}</li>
-			})
+  		tracks: this.props.spotifyData
   	})
   }
   handleNameUpdate(e) {
@@ -25,9 +24,21 @@ class ImportPlaylistContainer extends Component {
   }
   handleImportPlaylist(e) {
   	e.preventDefault();
-  	this.setState({
-  		playlistSubmitted: true
-  	})
+    var app = this;
+    Meteor.call('createPlaylist', app.state.playlistName, app.state.tracks, function(error, result) {
+      if (result) {
+        app.setState({
+          returnData: result,
+          playlistSubmitted: true
+        })
+      }
+      else {
+        app.setState({
+          spotifyData: "Please login re-apply",
+          isLoading: false
+        })
+      }
+    });
   	console.log('import action goes here')
   }
   render() {
@@ -36,6 +47,7 @@ class ImportPlaylistContainer extends Component {
     	tracks={this.state.tracks}
     	playlistName={this.state.playlistName}
     	onNameUpdate={this.handleNameUpdate.bind(this)}
+      returnData={this.state.returnData}
     	onImportPlaylist={this.handleImportPlaylist.bind(this)}
     	playlistSubmitted={this.state.playlistSubmitted}  />
     );

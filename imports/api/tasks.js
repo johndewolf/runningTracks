@@ -38,11 +38,29 @@ Meteor.methods({
 	},
 	getFollowerCount: function() {
     var spotifyApi = new SpotifyWebApi();
-    var response = spotifyApi.getMe();
+    var response = spotifyApi.createPlaylist(Meteor.user().services.spotify.id, playlistName, { public: false });
+
     if (checkTokenRefreshed(response, spotifyApi)) {
       response = spotifyApi.getMySavedTracks({});
     }
     return response.data.body.followers.total;
+	},
+
+	createPlaylist: function(playlistName, tracks) {
+		var spotifyApi = new SpotifyWebApi();
+		var trackUris = tracks.map(function(track) {
+      return track.uri;
+    });
+		var response = spotifyApi.createPlaylist(Meteor.user().services.spotify.id, playlistName, { public: false });
+
+		if (checkTokenRefreshed(response, spotifyApi)) {
+			response = spotifyApi.createPlaylist(Meteor.user().services.spotify.id,
+				playlistName, { public: false });
+    }
+    var addTrackResponse = spotifyApi.addTracksToPlaylist(Meteor.user().services.spotify.id,
+    	response.data.body.id, trackUris, {});
+
+    return addTrackResponse.data;
 	},
 
 	checkAccessToken: function() {
@@ -86,7 +104,7 @@ URL parameters - better?
 async server request with Meteor
 */ 
 /*to do:
-api call for playlist submit
+--api call for playlist submit
 handle errors and check for parameters on playlists results page
 type ahead for genres
 */
