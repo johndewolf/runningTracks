@@ -6,10 +6,16 @@ Meteor.methods({
 		console.log(spotifyApi);
 		return response.data.body.name;
 	},
+	getGenreSeeds: function() {
+		var response = spotifyGenreSeeds();
+		if (response.statusCode === 200) {
+			return response.data.genres;
+		}
+	},
 	getSpotifyTracks: function(genre, energy, timeRemaining) {
 		var min_energy = energy.split('|')[0];
 		var max_energy = energy.split('|')[1];
-		console.log(timeRemaining);
+		console.log(genre)
 		genre = genre.replace(' ', '-');
 		//get time in milliseconds
 		timeRemaining = timeRemaining * 60000;
@@ -30,7 +36,8 @@ Meteor.methods({
 						}
 					}
 			} else if (response.error) {
-				break;
+				console.log(response)
+				returnTracks.push('there was an error');
 			}
 		}
 		return returnTracks;
@@ -97,6 +104,15 @@ function spotifyRecommendation(genre, min_energy, max_energy) {
 				"max_energy": max_energy
 			}
 		})
+}
+
+function spotifyGenreSeeds() {
+	var spotifyApi = new SpotifyWebApi();
+	return HTTP.get('https://api.spotify.com/v1/recommendations/available-genre-seeds', {
+			"headers": {
+				"Authorization": 'Bearer ' + spotifyApi.getAccessToken()
+			}
+	})
 }
 
 /*questions:

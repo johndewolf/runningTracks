@@ -32,3 +32,91 @@ nav.topNav {
   background: white;
 
 }
+
+select {
+  padding: 15px 10px;
+  border: 0;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  text-transform: none;
+  background: transparent;
+  width: 300px;
+  max-width: 100%;
+  border-radius: 2px;
+  border: 1px solid #E0E0E0;
+}
+
+input[type=text] {
+  width: 300px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  border: 1px solid #E0E0E0;
+}
+
+.dropDown::after {
+  content: '&or;';
+  display: block;
+  font-size: 24px;
+  height:20px;
+  width:20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: black;
+}
+
+label {
+  display: block;
+  margin: 12px 0;
+  font-weight: bolder;
+}
+
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 300px;
+  max-width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  max-width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #E0E0E0;
+  border-radius: 1.3px;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 24px;
+  width: 6px;
+  border-radius: 2px;
+  margin-top: -8px;
+  background: #3498db;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  outline: none;
+}
+input[type=range]::-moz-range-track {
+  width: 300px;
+  max-width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #E0E0E0;
+  border-radius: 1.3px;
+}
+input[type=range]::-moz-range-thumb {
+  height: 24px;
+  width: 4px;
+  border-radius: 2px;
+  background: #3498db;
+  margin-top: -8px;
+}

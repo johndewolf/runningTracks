@@ -24,7 +24,10 @@ class PlaylistResults extends Component {
 					<p><b>Time:</b> {this.props.time}</p>
 					<p><b>Tempo:</b> {this.props.tempo}</p>
 					{this.props.showImport ? <ImportPlaylistContainer spotifyData={this.props.spotifyData} /> :
-					<p>Import this playlist into your Spotify account <button onClick={this.props.onImportClick}>here</button></p> }
+					<div>
+						<p>Import this playlist into your Spotify account <button onClick={this.props.onImportClick}>here</button></p>
+						<p>Or try <a href="/quick">another</a> search</p>
+					</div> }
 				</div>
 			)
 		}

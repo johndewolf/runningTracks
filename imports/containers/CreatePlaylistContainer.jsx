@@ -8,8 +8,19 @@ class CreatePlaylistContainer extends Component {
     this.state = {
       tempo: "",
       time: "",
-      genre: ""
+      genre: "",
+      availableGenres: []
     }
+  }
+  componentDidMount() {
+    var app = this;
+    Meteor.call('getGenreSeeds', function(error, result) {
+      if (result) {
+        app.setState({
+          availableGenres: result  
+        })  
+      }
+    })
   }
 
   handleTempoUpdate(e) {
@@ -48,7 +59,8 @@ class CreatePlaylistContainer extends Component {
         tempo={this.state.tempo}
         avgPace={this.state.avgPace}
         time={this.state.time}
-        genre={this.state.genre} />
+        genre={this.state.genre} 
+        availableGenres={this.state.availableGenres} />
     )
   }
 }
