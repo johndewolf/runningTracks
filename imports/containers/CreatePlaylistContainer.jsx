@@ -6,7 +6,7 @@ class CreatePlaylistContainer extends Component {
     super(props, context);
 
     this.state = {
-      tempo: "",
+      tempo: "0.1|0.2",
       time: "",
       genre: "",
       availableGenres: []
@@ -24,6 +24,7 @@ class CreatePlaylistContainer extends Component {
   }
 
   handleTempoUpdate(e) {
+    console.log(e.target.value);
     this.setState({
       tempo: e.target.value
     });

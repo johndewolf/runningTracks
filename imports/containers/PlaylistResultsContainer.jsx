@@ -28,7 +28,6 @@ class PlaylistResultsContainer extends Component {
     var app = this;
 
     Meteor.call('getSpotifyTracks', app.props.location.state.genre, app.props.location.state.tempo, app.props.location.state.time, function(error, result) {
-
       if (result) {
           app.setState({
             spotifyData: result,
