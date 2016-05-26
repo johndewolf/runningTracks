@@ -15,7 +15,7 @@ Meteor.methods({
 	getSpotifyTracks: function(genre, energy, timeRemaining) {
 		var min_energy = energy.split('|')[0];
 		var max_energy = energy.split('|')[1];
-		console.log(genre)
+
 		genre = genre.replace(' ', '-');
 		//get time in milliseconds
 		timeRemaining = timeRemaining * 60000;
@@ -24,10 +24,13 @@ Meteor.methods({
 		var response;
 		while (timeRemaining > 0) {
 			response = spotifyRecommendation(genre, min_energy, max_energy);
-			if (response.statusCode === 200) {
-				response.status
-					var tracks = response.data.tracks;
 
+			if (response.statusCode === 200) {
+
+					var tracks = response.data.tracks;
+					if (response.data.tracks.length === 0) {
+						break;
+					}
 					for (var x = 0; x < tracks.length; x++) {
 						returnTracks.push(tracks[x]);
 						timeRemaining -= tracks[x].duration_ms;
@@ -35,9 +38,9 @@ Meteor.methods({
 							break;
 						}
 					}
-			} else if (response.error) {
-				console.log(response)
+			} else {
 				returnTracks.push('there was an error');
+				break;
 			}
 		}
 		return returnTracks;
