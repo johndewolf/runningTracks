@@ -6,7 +6,7 @@ const CreatePlaylist = ({onPlaylistSubmit, onUpdateTempo, onUpdateGenre, onUpdat
 			return <option value={genre} key={i} />
 	})
 	return (
-		<div>
+		<div className="container">
 			<h1>Playlist Details</h1>
 			<form onSubmit={onPlaylistSubmit}>
 			

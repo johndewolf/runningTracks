@@ -16,6 +16,7 @@ nav.topNav {
   background: white;
   padding: 1em;
   font-size: 2em;
+  border-bottom: 1px solid #E2DADA;
 }
 
 .topNav a {
@@ -24,13 +25,21 @@ nav.topNav {
 }
 
 .container {
+  width: 90%;
   max-width: 600px;
   margin: 2em auto 0 auto;
+  border: 1px solid #E2DADA;
   padding: 1em;
   border-radius: 4px;
-  min-height: 100%;
   background: white;
 
+}
+
+
+.container.md {
+  width: 90%;
+  max-width: 800px;
+  transition: all 0.5s ease;
 }
 
 select {
@@ -119,4 +128,12 @@ input[type=range]::-moz-range-thumb {
   border-radius: 2px;
   background: #3498db;
   margin-top: -8px;
+}
+
+th {
+  text-align: left;
+}
+
+table {
+  width: 100%;
 }

@@ -43,7 +43,7 @@ class Home extends Component {
       var button = <button type="button" className="btn btn-large btn-success" onClick={this.spotifyLogin.bind(this)}>Login with Spotify</button>
     }
     return (
-      <div>
+      <div className="container">
         <h1>Welcome to runningTracks</h1>
         {button}					
       </div>

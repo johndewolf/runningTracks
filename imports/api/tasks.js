@@ -19,7 +19,6 @@ Meteor.methods({
 		genre = genre.replace(' ', '-');
 		//get time in milliseconds
 		timeRemaining = timeRemaining * 60000;
-		
 		var returnTracks = [];
 		var response;
 		while (timeRemaining > 0) {
@@ -126,4 +125,6 @@ async server request with Meteor
 --api call for playlist submit
 handle errors and check for parameters on playlists results page
 type ahead for genres
+prevent double tracks in playlists
+add and remove tracks
 */
