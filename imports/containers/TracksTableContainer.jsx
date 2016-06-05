@@ -14,11 +14,22 @@ class TracksTableContainer extends Component {
   		spotifyData: this.props.spotifyData
   	})
   }
+  handleDeleteTrack(e) {
+  	e.preventDefault();
+  	var spotifyId = e.target.getAttribute('data-trackid');
+  	var newTrackList = this.state.spotifyData.filter(function(track) {
+  		return track.id !== spotifyId })
+  	this.setState({
+  		spotifyData: newTrackList
+  	});
+
+  }
 
   render() {
     return (
     	<TracksTable 
-    		spotifyData={this.state.spotifyData} />
+    		spotifyData={this.state.spotifyData}
+    		onDeleteTrack={this.handleDeleteTrack.bind(this)} />
     )
   }
 }

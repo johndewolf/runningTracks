@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-const TracksTable = ({spotifyData}) => {
+const TracksTable = ({spotifyData, onDeleteTrack}) => {
 
 		function millisToMinutesAndSeconds(millis) {
 		  var minutes = Math.floor(millis / 60000);
@@ -14,6 +14,7 @@ const TracksTable = ({spotifyData}) => {
 					<td>{track.artists[0].name}</td>
 					<td>{track.name}</td>
 					<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
+					<td><a onClick={onDeleteTrack} href="#" data-trackid={track.id}>x</a></td>
 				</tr>
 			)
 		})
