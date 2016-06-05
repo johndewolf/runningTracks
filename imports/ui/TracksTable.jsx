@@ -9,7 +9,7 @@ const TracksTable = ({spotifyData}) => {
 		}
 		var playListLength = 0;
 		if (spotifyData.length === 0) {
-			var tracks = <li>Sorry no tracks found, please try a different search</li>
+			var tracks = <tr><td>Sorry no tracks found, please try a different search</td></tr>
 		}
 		else {
 			var tracks = spotifyData.map(function(track,i) {
