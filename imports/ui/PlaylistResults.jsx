@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ImportPlaylistContainer from '../containers/ImportPlaylistContainer';
-import TracksTable from './TracksTable';
+import TracksTableContainer from '../containers/TracksTableContainer';
 
 class PlaylistResults extends Component {
 	render(props) {
@@ -15,7 +15,7 @@ class PlaylistResults extends Component {
 			return (
 				<div className="container md">
 					<h1>RESULTS</h1>
-					<TracksTable spotifyData={this.props.spotifyData} />
+					<TracksTableContainer spotifyData={this.props.spotifyData} />
 					{this.props.showImport ? <ImportPlaylistContainer spotifyData={this.props.spotifyData} /> :
 					<div>
 						<p>Import this playlist into your Spotify account <button onClick={this.props.onImportClick}>here</button></p>

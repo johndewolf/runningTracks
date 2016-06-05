@@ -1,9 +1,7 @@
 Meteor.methods({
 	searchSpotify: function() {
-		console.log('running')
 		var spotifyApi = new SpotifyWebApi();
 		var response = spotifyApi.getArtist('2hazSY4Ef3aB9ATXW7F5w3');
-		console.log(spotifyApi);
 		return response.data.body.name;
 	},
 	getGenreSeeds: function() {

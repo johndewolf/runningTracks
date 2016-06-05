@@ -8,20 +8,16 @@ const TracksTable = ({spotifyData}) => {
 		  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 		}
 		var playListLength = 0;
-		if (spotifyData.length === 0) {
-			var tracks = <li>Sorry no tracks found, please try a different search</li>
-		}
-		else {
-			var tracks = spotifyData.map(function(track,i) {
-				return (
-					<tr key={i}>
-						<td>{track.artists[0].name}</td>
-						<td>{track.name}</td>
-						<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
-					</tr>
-				)
-			})
-		}
+		var tracks = spotifyData.map(function(track,i) {
+			return (
+				<tr key={i}>
+					<td>{track.artists[0].name}</td>
+					<td>{track.name}</td>
+					<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
+				</tr>
+			)
+		})
+
 		return (
 			<div>
 				<table>
@@ -33,7 +29,7 @@ const TracksTable = ({spotifyData}) => {
 						</tr>
 					</thead>
 					<tbody>
-						{tracks}
+						{tracks.length > 0 ? tracks : <tr><td>Sorry no results, please try again</td></tr>}
 					</tbody>
 				</table>
 			</div>
