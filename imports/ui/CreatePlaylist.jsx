@@ -46,7 +46,7 @@ const CreatePlaylist = ({onPlaylistSubmit, onUpdateTempo, onUpdateGenre, onUpdat
 				<datalist id="genres">
 					{genreList}
 				</datalist>
-				<button type='button' type="submit" className='btn btn-large btn-success'>Go!</button>
+				<button type='button' type="submit" className='margin-top'>Go!</button>
 			</form>
 		</div>
 	)

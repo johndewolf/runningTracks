@@ -136,4 +136,51 @@ th {
 
 table {
   width: 100%;
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color: #F1F1F1;
+}
+td, th {
+  padding: 0.5em;
+}
+button {
+  padding: 1em 2em;
+  background-color: transparent;
+  box-shadow: none !important;
+  text-shadow: none;
+  border: 1px solid #c1c0c0;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+button:hover {
+    border: 1px solid #3498db;
+    color: #3498db;
+}
+
+
+/*Utility Classes*/
+
+.flexcontainer-row {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row; 
+   flex-direction: row;
+   -webkit-justify-content: flex-start;
+   justify-content: flex-start;
+}
+
+.flex-left {
+  justify-self: flex-start;
+}
+
+@media (min-width: 768px) {
+  .flex-right {
+    margin-left: auto;
+  }
+}
+
+.margin-top {
+  margin-top: 1em;
 }

@@ -23,6 +23,7 @@ class Home extends Component {
         }
       });
   }
+
   spotifyLogin() {
     var options = {
       showDialog: true,
@@ -37,6 +38,7 @@ class Home extends Component {
     });
   }
   render() {
+
     if (this.state.loggedIn === true) {
       var button = <p><Link to='/quick'>proceed</Link></p>
     } else {
