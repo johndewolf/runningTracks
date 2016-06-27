@@ -45,9 +45,7 @@ Meteor.methods({
 		return returnTracks;
 
 	},
-	getUserId: function() {
-		return Meteor.user().services.spotify.id
-	},
+
 	getFollowerCount: function() {
     var spotifyApi = new SpotifyWebApi();
     var response = spotifyApi.createPlaylist(Meteor.user().services.spotify.id, playlistName, { public: false });

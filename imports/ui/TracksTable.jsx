@@ -7,6 +7,7 @@ const TracksTable = ({spotifyData}) => {
 		  var seconds = ((millis % 60000) / 1000).toFixed(0);
 		  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 		}
+
 		var playListLength = 0;
 		if (spotifyData.length === 0) {
 			var tracks = <tr><td>Sorry no tracks found, please try a different search</td></tr>
