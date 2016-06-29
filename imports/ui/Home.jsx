@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { browserHistory, Link } from 'react-router';
+import store from '../store';
+import { userProfileSuccess } from '../actions/user-actions';
 // App component - represents the whole app
 class Home extends Component {
   constructor(props) {
@@ -11,10 +13,9 @@ class Home extends Component {
   componentWillMount() {
     var app = this;
     Meteor.call('checkAccessToken', function(error, result) {
-      if (result && result === true) {
-          app.setState({
-            loggedIn: true
-          })
+      if (result && result !== false) {
+          store.dispatch(userProfileSuccess(result.id))
+          console.log(store.getState())
         }
         else {
           app.setState({
@@ -29,16 +30,16 @@ class Home extends Component {
       showDialog: true,
       requestPermissions: ['user-read-email', 'playlist-modify-public', 'playlist-modify-private']
     };
-    Meteor.loginWithSpotify(options, function(err) {
+    Meteor.loginWithSpotify(options, function(err, result) {
       if (err) {
         console.log(err);
       } else {
-        browserHistory.push('/quick');
+        //get spotify account info;
       }
     });
   }
   render() {
-
+    console.log(store.getState());
     if (this.state.loggedIn === true) {
       var button = <p><Link to='/quick'>proceed</Link></p>
     } else {

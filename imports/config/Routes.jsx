@@ -6,12 +6,12 @@ import Home from '../ui/Home.jsx';
 import CreatePlaylistContainer from '../containers/CreatePlaylistContainer.jsx';
 import PlaylistResultsContainer from '../containers/PlaylistResultsContainer.jsx';
 
-export const renderRoutes = () => (
-  <Router history={browserHistory}>
-  	<Route path='/' component={App}>
-  		<IndexRoute component={Home} />
-  		<Route path='quick' component={CreatePlaylistContainer} />
-  		<Route path='quick/results' component={PlaylistResultsContainer} />
+export default (
+	<Router history={browserHistory}>
+		<Route path='/' component={App}>
+			<IndexRoute component={Home} />
+			<Route path='quick' component={CreatePlaylistContainer} />
+			<Route path='quick/results' component={PlaylistResultsContainer} />
 		</Route>
-  </Router>
- );
+	</Router>
+);
