@@ -1,10 +1,11 @@
 
 import React, { Component, PropTypes } from 'react';
 
-const NavBar = () => {
+const NavBar = ({loggedIn, username}) => {
 	return (
-		<nav className="topNav">
-			<a href="/">rT</a>
+		<nav className="topNav flexcontainer-row">
+			<a href="/" className="flex-left">rT</a>
+			<div className="flex-right">{username}</div>
 		</nav>
 	)
 }

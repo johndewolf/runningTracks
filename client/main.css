@@ -159,6 +159,7 @@ button, .btn {
 
 button:hover, .btn:hover {
     border: 1px solid #3498db;
+    border-radius: 8px;
     color: #3498db;
     cursor: pointer; cursor: hand; 
 }

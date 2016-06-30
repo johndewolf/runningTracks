@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux'
 import * as types from '../actions/action-types.js';
 const initialState = {
-  userProfile: {}
+  username: "",
+  loggedIn: false
 };
 
-const userState = (state = {}, action) => {
+const userState = (state = initialState, action) => {
   switch (action.type) {
     case types.USER_PROFILE_SUCCESS:
       return Object.assign({}, state, {
-        id: action
+        username: action,
+        loggedIn: true
       })
     default:
       return state
@@ -26,9 +28,9 @@ const playlist = (state = {}, action) => {
   }
 }
 
-const reducers = combineReducers({
-  userState,
-  playlist
-})
-
+// const reducers = combineReducers({
+//   userState,
+//   playlist
+// })
+const reducers = userState;
 export default reducers

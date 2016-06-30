@@ -5,13 +5,14 @@ class NavBarContainer extends Component {
 
   render() {
     return (
-    	<NavBar userprofile={this.props.userprofile} />
+    	<NavBar loggedIn={this.props.loggedIn} username={this.props.username} />
     );
   }
 }
 const mapStateToProps = function(store) {
   return {
-    userprofile: store.UserState.userprofile
+    loggedIn: store.loggedIn,
+    username: store.username.userProfile
   };
 };
-export default NavBarContainer;
+export default connect(mapStateToProps)(NavBarContainer);
