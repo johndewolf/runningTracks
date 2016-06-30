@@ -1,1 +1,2 @@
 export const USER_PROFILE_SUCCESS = 'USER_PROFILE_SUCCESS';
+export const GET_TRACKS = 'GET_TRACKS';

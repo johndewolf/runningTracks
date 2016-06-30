@@ -48,8 +48,8 @@ class HomeContainer extends Component {
 
 const mapStateToProps = function(store) {
   return {
-    loggedIn: store.loggedIn,
-    username: store.username.userProfile
+    loggedIn: store.userReducer.loggedIn,
+    username: store.userReducer.username.userProfile
   };
 };
 export default connect(mapStateToProps)(HomeContainer);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Meteor } from 'meteor/meteor';
+import store from '../store';
+import { connect } from 'react-redux';
+import { addTracks, getTracks } from '../actions/user-actions';
 import PlaylistResults from '../ui/PlaylistResults.jsx';
 
 class PlaylistResultsContainer extends Component {
@@ -27,13 +29,10 @@ class PlaylistResultsContainer extends Component {
   componentWillMount() {
     var app = this;
     Meteor.call('getSpotifyTracks', app.props.location.state.genre, app.props.location.state.tempo, app.props.location.state.time, function(error, result) {
-      console.log(result);
+
       if (result) {
+          store.dispatch(addTracks(result))
           app.setState({
-            spotifyData: result,
-            tempo: app.props.location.state.tempo,
-            time: app.props.location.state.time,
-            genre: app.props.location.state.genre,
             isLoading: false
           })
         }
@@ -50,7 +49,7 @@ class PlaylistResultsContainer extends Component {
   return (
       <PlaylistResults
         isLoading={this.state.isLoading} 
-        spotifyData={this.state.spotifyData}
+        spotifyData={this.props.spotifyData}
         tempo={this.state.tempo}
         time={this.state.time}
         genre={this.state.genre}
@@ -60,4 +59,10 @@ class PlaylistResultsContainer extends Component {
   }
 }
 
-export default PlaylistResultsContainer;
+const mapStateToProps = function(store) {
+  return {
+    spotifyData: store.playlistReducer.spotifyData.tracks
+  };
+};
+
+export default connect(mapStateToProps)(PlaylistResultsContainer);

@@ -16,7 +16,7 @@ const TracksTable = ({spotifyData}) => {
 			var tracks = spotifyData.map(function(track,i) {
 				playListLength += track.duration_ms;
 				return (
-					<tr key={i}>
+					<tr key={track.id}>
 						<td>{track.artists[0].name}</td>
 						<td>{track.name}</td>
 						<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
