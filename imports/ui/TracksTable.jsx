@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 const TracksTable = ({spotifyData, onDeleteTrack}) => {
 
 		function millisToMinutesAndSeconds(millis) {
@@ -14,7 +14,7 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 					<td>{track.artists[0].name}</td>
 					<td>{track.name}</td>
 					<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
-					<td><a onClick={onDeleteTrack} href="#" data-trackid={track.id}>x</a></td>
+					<td><i className="material-icons delete" onClick={onDeleteTrack} data-trackid={track.id}>remove_circle</i></td>
 				</tr>
 			)
 		})

@@ -12,7 +12,7 @@ const Home = ({onSpotifyLogin, username, loggedIn}) => {
     <div className="container text-center">
       { loggedIn === true ? <h1>Welcome Back {username}</h1> : <h1>Welcome to runningTracks</h1> }
       <p>Click below to authorize your Spotify account</p>
-      {button}          
+      {button}
     </div>
   );
 }

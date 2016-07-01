@@ -165,6 +165,11 @@ button:hover, .btn:hover {
     cursor: pointer; cursor: hand; 
 }
 
+i.material-icons.delete {
+  font-size: 1.25em;
+  color: #ce0000;
+  cursor: pointer;
+}
 
 /*Utility Classes*/
 .centered-block {

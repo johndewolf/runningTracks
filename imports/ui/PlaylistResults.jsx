@@ -20,7 +20,7 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 						<AlbumArt spotifyData={spotifyData} />
 					</div>
 				</div>
-				<TracksTableContainer spotifyData={spotifyData} />
+				<TracksTableContainer spotifyData={spotifyData} transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300} />
 				{showImport ? <ImportPlaylistContainer spotifyData={spotifyData} /> :
 				<div className="flexcontainer-row margin-top">
 					<div classsName="flex-left">
