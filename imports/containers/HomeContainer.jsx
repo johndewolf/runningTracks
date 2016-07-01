@@ -7,17 +7,13 @@ import Home from '../ui/Home.jsx';
 
 class HomeContainer extends Component {
 
-  componentWillMount() {
-    Meteor.call('checkAccessToken', function(error, result) {
-      if (result && result !== false) {
-          store.dispatch(userProfileSuccess(result.id))
-          console.log(store.getState())
-        }
-      else {
-      	console.log(error);
-      }
-    });
-  }
+  // componentWillMount() {
+  //   Meteor.call('checkAccessToken', function(error, result) {
+  //     if (result && result !== false) {
+  //         store.dispatch(userProfileSuccess(result.id))
+  //       }
+  //   });
+  // }
 
   handleSpotifyLogin() {
     var options = {
