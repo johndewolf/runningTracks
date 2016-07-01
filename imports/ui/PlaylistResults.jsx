@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ImportPlaylistContainer from '../containers/ImportPlaylistContainer';
+import { Router, Route, Link, browserHistory } from 'react-router'
 import TracksTableContainer from '../containers/TracksTableContainer';
 import AlbumArt from './AlbumArt.jsx';
 
@@ -20,7 +21,7 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 						<AlbumArt spotifyData={spotifyData} />
 					</div>
 				</div>
-				<TracksTableContainer spotifyData={spotifyData} transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300} />
+				<TracksTableContainer />
 				{showImport ? <ImportPlaylistContainer spotifyData={spotifyData} /> :
 				<div className="flexcontainer-row margin-top">
 					<div classsName="flex-left">
@@ -28,7 +29,7 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 						<a className="btn margin-top" onClick={onImportClick}>Import</a></div>
 					<div className="flex-right">
 						<p>Or try another search</p>
-						<a href="/quick" className="btn margin-top">Search Again</a>
+						<Link to="/quick" className="btn margin-top">Search Again</Link>
 					</div>
 				</div> }
 			</div>
