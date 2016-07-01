@@ -3,9 +3,11 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 
 const NavBar = ({loggedIn, username}) => {
 	return (
-		<nav className="topNav flexcontainer-row">
-			<Link to="/" className="flex-left">rT</Link>
-			<div className="flex-right">{username}</div>
+		<nav className="topNav row end-xs">
+			<div className="col-sm-6">
+				<Link to="/" >rT</Link>
+			</div>
+			<div className="col-sm-6">{username}</div>
 		</nav>
 	)
 }
