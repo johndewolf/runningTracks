@@ -8,7 +8,7 @@ const ImportPlaylist = ({onImportPlaylist, onNameUpdate, playlistName, tracks, p
 			<form onSubmit={onImportPlaylist}>
 				<label htmlFor="playlist-name">Playlist Name</label>
 				<input onChange={onNameUpdate} name="playlist-name" type="text"></input>
-				<button type='button' type="submit" className='btn btn-large btn-success'>Import!</button>
+				<button type='button' type="submit" className='btn margin-top'>Import!</button>
 			</form>}
 		</div>
 	)
