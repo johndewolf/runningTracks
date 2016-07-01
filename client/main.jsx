@@ -28,6 +28,5 @@ Meteor.startup(() => {
     wf.async = 'true';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
-    console.log("async fonts loaded", WebFontConfig);
   })();
 });

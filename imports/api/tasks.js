@@ -124,9 +124,12 @@ URL parameters - better?
 async server request with Meteor
 */ 
 /*to do:
+SUBMIT FORM ON BUTTON CLICK, NOT componentmount
+add loading to redux state
+switch to URL parameters
 --api call for playlist submit
 handle errors and check for parameters on playlists results page
-type ahead for genres
+--type ahead for genres
 prevent double tracks in playlists
-add and remove tracks
+--add and remove tracks
 */
