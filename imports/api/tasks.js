@@ -76,7 +76,6 @@ Meteor.methods({
 	checkAccessToken: function() {
 		var spotifyApi = new SpotifyWebApi();
 		var response = spotifyApi.getMe();
-		console.log(response.data.body);
 		if (response.error && response.error.statusCode === 401) {
 			return false
 		}

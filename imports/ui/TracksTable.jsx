@@ -1,32 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 
-const TracksTable = ({spotifyData}) => {
+const TracksTable = ({spotifyData, onDeleteTrack}) => {
 
 		function millisToMinutesAndSeconds(millis) {
 		  var minutes = Math.floor(millis / 60000);
 		  var seconds = ((millis % 60000) / 1000).toFixed(0);
 		  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 		}
-
 		var playListLength = 0;
-		if (spotifyData.length === 0) {
-			var tracks = <tr><td>Sorry no tracks found, please try a different search</td></tr>
-		}
-		else {
-			var tracks = spotifyData.map(function(track,i) {
-				playListLength += track.duration_ms;
-				return (
-					<tr key={track.id}>
-						<td>{track.artists[0].name}</td>
-						<td>{track.name}</td>
-						<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
-					</tr>
-				)
-			})
-		}
+		var tracks = spotifyData.map(function(track,i) {
+			return (
+				<tr key={i}>
+					<td>{track.artists[0].name}</td>
+					<td>{track.name}</td>
+					<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
+					<td><a onClick={onDeleteTrack} href="#" data-trackid={track.id}>x</a></td>
+				</tr>
+			)
+		})
+
 		return (
 			<div>
-				<p>{spotifyData.length} songs, {millisToMinutesAndSeconds(playListLength)}</p>
 				<table>
 					<thead>
 						<tr>
@@ -36,7 +30,7 @@ const TracksTable = ({spotifyData}) => {
 						</tr>
 					</thead>
 					<tbody>
-						{tracks}
+						{tracks.length > 0 ? tracks : <tr><td>Sorry no results, please try again</td></tr>}
 					</tbody>
 				</table>
 			</div>

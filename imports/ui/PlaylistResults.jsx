@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ImportPlaylistContainer from '../containers/ImportPlaylistContainer';
-import TracksTable from './TracksTable';
+import TracksTableContainer from '../containers/TracksTableContainer';
 import AlbumArt from './AlbumArt.jsx';
 
 const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) => {
@@ -20,7 +20,7 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 						<AlbumArt spotifyData={spotifyData} />
 					</div>
 				</div>
-				<TracksTable spotifyData={spotifyData} />
+				<TracksTableContainer spotifyData={spotifyData} />
 				{showImport ? <ImportPlaylistContainer spotifyData={spotifyData} /> :
 				<div className="flexcontainer-row margin-top">
 					<div classsName="flex-left">

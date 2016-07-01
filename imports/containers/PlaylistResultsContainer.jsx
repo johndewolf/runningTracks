@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
 import store from '../store';
 import { connect } from 'react-redux';
 import { addTracks, getTracks } from '../actions/user-actions';
@@ -61,7 +60,7 @@ class PlaylistResultsContainer extends Component {
 
 const mapStateToProps = function(store) {
   return {
-    spotifyData: store.playlistReducer.spotifyData.tracks
+    spotifyData: store.playlistReducer.spotifyData
   };
 };
 
