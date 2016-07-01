@@ -4,8 +4,13 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 const NavBar = ({loggedIn, username}) => {
 	return (
 		<nav className="topNav flexcontainer-row">
-			<Link to="/" className="flex-left">rT</Link>
-			<div className="flex-right">{username}</div>
+			<div className="flex-left">
+				<Link to="/">rT</Link>
+			</div>
+			<div className="flex-right">
+				<i className="material-icons account-icon">account_circle</i>
+				<span className="username">{username}</span>
+			</div>
 		</nav>
 	)
 }

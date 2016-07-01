@@ -216,3 +216,14 @@ i.material-icons.delete {
   border-radius: 50%;
   overflow: hidden;
 }
+
+.username {
+  font-size: 0.75em;
+}
+
+.material-icons.account-icon {
+  position: relative;
+  top: 8px;
+  font-size: 1em;
+  margin-right: 0.5em;
+}

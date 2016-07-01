@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 const TracksTable = ({spotifyData, onDeleteTrack}) => {
 
 		function millisToMinutesAndSeconds(millis) {
@@ -21,7 +21,6 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 
 		return (
 			<div>
-			<ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
 				<table>
 					<thead>
 						<tr>
@@ -34,7 +33,6 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 						{tracks.length > 0 ? tracks : <tr><td>Sorry no results, please try again</td></tr>}
 					</tbody>
 				</table>
-				</ReactCSSTransitionGroup>
 			</div>
 		)
 }
