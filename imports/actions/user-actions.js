@@ -1,32 +1,36 @@
-const USER_PROFILE_SUCCESS = 'USER_PROFILE_SUCCESS';
-const GET_TRACKS = 'GET_TRACKS';
-const ADD_TRACKS = 'ADD_TRACKS';
-const REMOVE_TRACK = 'REMOVE_TRACK'
+import * as types from '../actions/action-types.js';
 
 export const userProfileSuccess = (userProfile) => {
   return {
-    type: USER_PROFILE_SUCCESS,
+    type: types.USER_PROFILE_SUCCESS,
     userProfile
+  };
+}
+
+export const userLogout = (loggedIn) => {
+  return {
+    type: types.USER_LOGOUT,
+    loggedIn
   };
 }
 
 export const getTracks = (tracks) => {
   return {
-    type: GET_TRACKS,
+    type: types.GET_TRACKS,
     tracks
   };
 }
 
 export const removeTrack = (trackId) => {
   return {
-    type: REMOVE_TRACK,
+    type: types.REMOVE_TRACK,
     trackId
   };
 }
 
 export const addTracks = (tracks) => {
   return {
-    type: ADD_TRACKS,
+    type: types.ADD_TRACKS,
     tracks
   };
 }

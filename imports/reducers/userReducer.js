@@ -11,6 +11,11 @@ const userReducer = (state = initialState, action) => {
         username: action,
         loggedIn: true
       })
+    case types.USER_LOGOUT: 
+      return Object.assign({}, state, {
+        username: "",
+        loggedIn: false
+      })
     default:
       return state
   }

@@ -1,2 +1,5 @@
 export const USER_PROFILE_SUCCESS = 'USER_PROFILE_SUCCESS';
+export const USER_LOGOUT = 'USER_LOGOUT';
 export const GET_TRACKS = 'GET_TRACKS';
+export const ADD_TRACKS = 'ADD_TRACKS';
+export const REMOVE_TRACK = 'REMOVE_TRACK';

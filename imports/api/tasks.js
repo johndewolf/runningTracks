@@ -74,8 +74,10 @@ Meteor.methods({
 	},
 
 	checkAccessToken: function() {
-		var spotifyApi = new SpotifyWebApi();
-		var response = spotifyApi.getMe();
+		console.log(Meteor.user());
+			var spotifyApi = new SpotifyWebApi();
+			var response = spotifyApi.getMe();	
+
 		if (response.error && response.error.statusCode === 401) {
 			return false
 		}
@@ -95,6 +97,7 @@ var checkTokenRefreshed = function(response, api) {
     return false;
   }
 }
+
 
 function spotifyRecommendation(genre, min_energy, max_energy) {
 	var spotifyApi = new SpotifyWebApi();

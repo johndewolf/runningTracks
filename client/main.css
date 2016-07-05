@@ -24,6 +24,13 @@ nav.topNav {
   color: #444242;
 }
 
+.nav-links {
+  margin: 0;
+  list-style: none;
+  text-align: right;
+  font-size: 0.75em;
+}
+
 .container {
   width: 90%;
   max-width: 600px;
@@ -217,13 +224,30 @@ i.material-icons.delete {
   overflow: hidden;
 }
 
-.username {
-  font-size: 0.75em;
-}
-
-.material-icons.account-icon {
+.nav-links .material-icons {
   position: relative;
-  top: 8px;
+  top: 4px;
   font-size: 1em;
   margin-right: 0.5em;
+}
+
+#toggle-icon {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: all 0.25s linear;
+}
+
+#toggle-icon.active {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#profile-dropdown {
+  margin-right: 37px;
 }
