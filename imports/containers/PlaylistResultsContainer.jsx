@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import store from '../store';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { addTracks, getTracks } from '../actions/user-actions';
 import PlaylistResults from '../ui/PlaylistResults.jsx';
 
@@ -27,21 +28,26 @@ class PlaylistResultsContainer extends Component {
 
   componentWillMount() {
     var app = this;
-    Meteor.call('getSpotifyTracks', app.props.location.state.genre, app.props.location.state.tempo, app.props.location.state.time, function(error, result) {
+    console.log(this.props.location.state)
+    if (this.props.location.state === null || store.getState().userReducer.loggedIn === false) {
+      browserHistory.push('/');
+    } else {
+      Meteor.call('getSpotifyTracks', app.props.location.state.genre, app.props.location.state.tempo, app.props.location.state.time, function(error, result) {
 
-      if (result) {
-          store.dispatch(addTracks(result))
-          app.setState({
-            isLoading: false
-          })
-        }
-        else {
-          app.setState({
-            spotifyData: "Please login re-apply",
-            isLoading: false
-          })
-        }
-      });
+        if (result) {
+            store.dispatch(addTracks(result))
+            app.setState({
+              isLoading: false
+            })
+          }
+          else {
+            app.setState({
+              spotifyData: "Please login re-apply",
+              isLoading: false
+            })
+          }
+        });
+    }
   }
 
   render() {

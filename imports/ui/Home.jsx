@@ -10,6 +10,7 @@ const Home = ({onSpotifyLogin, username, loggedIn}) => {
   
   return (
     <div className="container text-center">
+    <iframe src="https://embed.spotify.com/?uri=spotify:track:5JunxkcjfCYcY7xJ29tLai" frameborder="0" allowtransparency="true"></iframe>
       { loggedIn === true ? <h1>Welcome Back {username}</h1> : <h1>Welcome to runningTracks</h1> }
       <p>Click below to authorize your Spotify account</p>
       {button}

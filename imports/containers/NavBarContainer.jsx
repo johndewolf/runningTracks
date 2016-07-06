@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-router'
 import store from '../store';
 import { browserHistory } from 'react-router';
 import { userLogout } from '../actions/user-actions';

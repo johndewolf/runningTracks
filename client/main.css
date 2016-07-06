@@ -251,3 +251,31 @@ i.material-icons.delete {
 #profile-dropdown {
   margin-right: 37px;
 }
+/*
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+  background-color: blue;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  background-color: pink;
+  transition: opacity 300ms ease-in;
+}*/

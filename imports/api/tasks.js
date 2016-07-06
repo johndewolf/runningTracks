@@ -1,9 +1,7 @@
 Meteor.methods({
 	searchSpotify: function() {
-		console.log('running')
 		var spotifyApi = new SpotifyWebApi();
 		var response = spotifyApi.getArtist('2hazSY4Ef3aB9ATXW7F5w3');
-		console.log(spotifyApi);
 		return response.data.body.name;
 	},
 	getGenreSeeds: function() {
@@ -74,9 +72,8 @@ Meteor.methods({
 	},
 
 	checkAccessToken: function() {
-		console.log(Meteor.user());
-			var spotifyApi = new SpotifyWebApi();
-			var response = spotifyApi.getMe();	
+		var spotifyApi = new SpotifyWebApi();
+		var response = spotifyApi.getMe();	
 
 		if (response.error && response.error.statusCode === 401) {
 			return false
@@ -131,7 +128,7 @@ SUBMIT FORM ON BUTTON CLICK, NOT componentmount
 add loading to redux state
 switch to URL parameters
 --api call for playlist submit
-handle errors and check for parameters on playlists results page
+--handle errors and check for parameters on playlists results page
 --type ahead for genres
 prevent double tracks in playlists
 --add and remove tracks
