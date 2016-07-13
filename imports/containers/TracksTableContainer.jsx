@@ -32,7 +32,6 @@ class TracksTableContainer extends Component {
   }
 }
 
-export default TracksTableContainer;
 const mapStateToProps = function(store) {
   return {
     spotifyData: store.playlistReducer.spotifyData

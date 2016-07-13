@@ -34,3 +34,10 @@ export const addTracks = (tracks) => {
     tracks
   };
 }
+
+export const updateField = (updateField) => {
+  return {
+    type: types.UPDATE_FIELD,
+    updateField
+  };
+}

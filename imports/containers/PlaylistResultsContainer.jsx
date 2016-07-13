@@ -10,10 +10,6 @@ class PlaylistResultsContainer extends Component {
     super(props);
 
     this.state = {
-      spotifyData: "",
-      tempo: "",
-      time: "",
-      genre: "",
       isLoading: true,
       showImport: false
     };
@@ -28,11 +24,15 @@ class PlaylistResultsContainer extends Component {
 
   componentWillMount() {
     var app = this;
-    console.log(this.props.location.state)
-    if (this.props.location.state === null || store.getState().userReducer.loggedIn === false) {
+    if (store.getState().userReducer.loggedIn === false) {
       browserHistory.push('/');
     } else {
-      Meteor.call('getSpotifyTracks', app.props.location.state.genre, app.props.location.state.tempo, app.props.location.state.time, function(error, result) {
+      var currentState = store.getState().formReducer[1]
+      Meteor.call('getSpotifyTracks',
+        currentState.genre,
+        currentState.tempo,
+        currentState.time,
+        function(error, result) {
 
         if (result) {
             store.dispatch(addTracks(result))
@@ -55,9 +55,6 @@ class PlaylistResultsContainer extends Component {
       <PlaylistResults
         isLoading={this.state.isLoading} 
         spotifyData={this.props.spotifyData}
-        tempo={this.state.tempo}
-        time={this.state.time}
-        genre={this.state.genre}
         showImport={this.state.showImport}
         onImportClick={this.handleImportClick.bind(this)} />
     )
