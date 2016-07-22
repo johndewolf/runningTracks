@@ -4,6 +4,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import App from '../ui/App.jsx';
 import HomeContainer from '../containers/HomeContainer.jsx';
 import CreatePlaylistContainer from '../containers/CreatePlaylistContainer.jsx';
+import CreatePerMilePlaylistContainer from '../containers/CreatePerMilePlaylistContainer.jsx';
 import PlaylistResultsContainer from '../containers/PlaylistResultsContainer.jsx';
 
 export default (
@@ -11,6 +12,7 @@ export default (
 		<Route path='/' component={App}>
 			<IndexRoute component={HomeContainer} />
 			<Route path='quick' component={CreatePlaylistContainer} />
+			<Route path='trackPerMile' component={CreatePerMilePlaylistContainer} />
 			<Route path='quick/results' component={PlaylistResultsContainer} />
 		</Route>
 	</Router>

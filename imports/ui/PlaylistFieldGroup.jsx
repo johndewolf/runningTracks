@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, time, genre, availableGenres}) => {
+const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, time, genre, availableGenres, mile}) => {
 	var genreList = availableGenres.map(function(genre,i) {
 			return <option value={genre} key={i} />
 	})

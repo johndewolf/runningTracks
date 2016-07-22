@@ -41,3 +41,9 @@ export const updateField = (updateField) => {
     updateField
   };
 }
+export const addFieldGroup = (addFieldGroup) => {
+  return {
+    type: types.ADD_FIELD_GROUP,
+    addFieldGroup
+  };
+}
