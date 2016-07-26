@@ -27,11 +27,9 @@ class PlaylistResultsContainer extends Component {
     if (store.getState().userReducer.loggedIn === false) {
       browserHistory.push('/');
     } else {
-      var currentState = store.getState().formReducer[1]
+      var formData = store.getState().formReducer;
       Meteor.call('getSpotifyTracks',
-        currentState.genre,
-        currentState.tempo,
-        currentState.time,
+        formData,
         function(error, result) {
 
         if (result) {

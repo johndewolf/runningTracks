@@ -1,3 +1,4 @@
+import store from '../store';
 Meteor.methods({
 	searchSpotify: function() {
 		var spotifyApi = new SpotifyWebApi();
@@ -10,38 +11,18 @@ Meteor.methods({
 			return response.data.genres;
 		}
 	},
-	getSpotifyTracks: function(genre, energy, timeRemaining) {
-		var min_energy = energy.split('|')[0];
-		var max_energy = energy.split('|')[1];
-
-		genre = genre.replace(' ', '-');
-		//get time in milliseconds
-		timeRemaining = timeRemaining * 60000;
+	getSpotifyTracks: function(formData) {
+		var min_tempo, max_tempo, genre, timeRemaining, response;
 		var returnTracks = [];
-		var response;
-		while (timeRemaining > 0) {
-			response = spotifyRecommendation(genre, min_energy, max_energy);
-
-			if (response.statusCode === 200) {
-
-					var tracks = response.data.tracks;
-					if (response.data.tracks.length === 0) {
-						break;
-					}
-					for (var x = 0; x < tracks.length; x++) {
-						returnTracks.push(tracks[x]);
-						timeRemaining -= tracks[x].duration_ms;
-						if (timeRemaining < 0) {
-							break;
-						}
-					}
-			} else {
-				returnTracks.push('there was an error');
-				break;
-			}
-		}
-		return returnTracks;
-
+		formData.forEach(function(mile) {
+			min_tempo = mile.tempo.split('|')[0];
+			max_tempo = mile.tempo.split('|')[1];
+			genre = mile.genre.replace(' ', '-');			
+			timeRemaining = mile.time * 60000;
+			var tracks = getSpotifyData(timeRemaining, genre, min_tempo, max_tempo);
+			returnTracks.push(tracks);
+		})
+		return [].concat.apply([], returnTracks);
 	},
 
 	getFollowerCount: function() {
@@ -119,6 +100,31 @@ function spotifyGenreSeeds() {
 	})
 }
 
+function getSpotifyData(timeRemaining, genre, min_energy, max_energy) {
+	var returnTracks = [];
+	while (timeRemaining > 0) {
+		response = spotifyRecommendation(genre, min_energy, max_energy);
+
+		if (response.statusCode === 200) {
+
+				var tracks = response.data.tracks;
+				if (response.data.tracks.length === 0) {
+					break;
+				}
+				for (var x = 0; x < tracks.length; x++) {
+					returnTracks.push(tracks[x]);
+					timeRemaining -= tracks[x].duration_ms;
+					if (timeRemaining < 0) {
+						break;
+					}
+				}
+		} else {
+			returnTracks.push('there was an error');
+			break;
+		}
+	}
+	return returnTracks;
+}
 /*questions:
 URL parameters - better?
 async server request with Meteor

@@ -43,12 +43,13 @@ class PlaylistFieldGroupContainer extends Component {
 };
 
 const mapStateToProps = function(store, ownProps) {
-  console.log(ownProps)
-  var currenTime = store.formReducer[ownProps.mile].time
+
+  var currentTime = store.formReducer.filter(function(mile) {
+    return mile.mile == ownProps.mile
+  })[0].time;
   return {
-    time: currenTime
+    time: currentTime
   };
 };
 
-// export default connect(mapStateToProps)(PlaylistFieldGroupContainer);
-export default PlaylistFieldGroupContainer;
+export default connect(mapStateToProps)(PlaylistFieldGroupContainer);
