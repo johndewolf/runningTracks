@@ -35,6 +35,13 @@ export const addTracks = (tracks) => {
   };
 }
 
+export const resetFields = (resetFields) => {
+  return {
+    type: types.RESET_FIELDS,
+    resetFields
+  }
+}
+
 export const updateField = (updateField) => {
   return {
     type: types.UPDATE_FIELD,

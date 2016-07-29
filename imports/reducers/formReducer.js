@@ -30,6 +30,8 @@ const formReducer = (state = initialState, action) => {
       )
     case types.ADD_FIELD_GROUP:
       return (state.concat({mile: action.addFieldGroup, genre: "",  tempo: "0.1|0.2", time: 0}))
+    case types.RESET_FIELDS:
+      return initialState
     default:
       return state
   }

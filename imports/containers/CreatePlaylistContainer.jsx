@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import store from '../store';
 import { addFieldGroup } from '../actions/user-actions';
+import { resetFields } from '../actions/user-actions';
 import { connect } from 'react-redux';
 import CreatePlaylist from '../ui/CreatePlaylist.jsx';
 class CreatePlaylistContainer extends Component {
   //Next steps: move the state for these fields into redux store, remove the constructor, have the HOC pull state from redux store and update state
-
+  componentWillMount() {
+    store.dispatch(resetFields());
+  }
   handlePlaylistSubmit(e) {
     e.preventDefault();
     this.context.router.push({

@@ -153,6 +153,6 @@ async server request with Meteor
 */ 
 /*to do:
 -If subsetSum finds number equal to target or within range, break
--Reset state on search
-
+-Update form style
+-Update table style to show breakdown for miles
 */
