@@ -1,4 +1,3 @@
-import store from '../store';
 Meteor.methods({
 	searchSpotify: function() {
 		var spotifyApi = new SpotifyWebApi();
@@ -102,40 +101,58 @@ function spotifyGenreSeeds() {
 
 function getSpotifyData(timeRemaining, genre, min_energy, max_energy) {
 	var returnTracks = [];
-	while (timeRemaining > 0) {
-		response = spotifyRecommendation(genre, min_energy, max_energy);
 
-		if (response.statusCode === 200) {
+	response = spotifyRecommendation(genre, min_energy, max_energy);
 
-				var tracks = response.data.tracks;
-				if (response.data.tracks.length === 0) {
-					break;
-				}
-				for (var x = 0; x < tracks.length; x++) {
-					returnTracks.push(tracks[x]);
-					timeRemaining -= tracks[x].duration_ms;
-					if (timeRemaining < 0) {
-						break;
-					}
-				}
-		} else {
-			returnTracks.push('there was an error');
-			break;
-		}
+	if (response.statusCode === 200) {
+
+			var tracks = response.data.tracks;
+
+			if (response.data.tracks.length === 0) {
+				returnTracks.push('there was an error');
+			}
+
+			var returnTracks = findOptimalSubset(tracks, timeRemaining);
+	} else {
+		returnTracks.push('there was an error');
 	}
 	return returnTracks;
+}
+
+function findOptimalSubset(numbers, target) {
+  var solutions = [], currentBest
+
+  function subsetSum(numbers, target, partial = [])   {
+     if (partial.length > 0) {
+
+      solution = partial.reduce(function(total, currentTrack) {
+      	return (total + currentTrack.duration_ms);
+      }, 0);
+
+      diffFromTarget = Math.abs(target - solution);
+      if ( currentBest === undefined || diffFromTarget < currentBest ){
+        currentBest = diffFromTarget;
+        solutions.push(partial);
+      }
+    }
+    for (var index = 0; index < numbers.length - 1;  index++) {
+      var n = numbers[index];
+      var remaining = numbers.slice(index + 1, numbers.length);
+      var newPartial = partial.concat(n);
+      subsetSum(remaining, target, newPartial);
+    }
+    return solutions;
+  }
+  var subsets = subsetSum(numbers, target)
+  return subsets[subsets.length - 1];
+
 }
 /*questions:
 URL parameters - better?
 async server request with Meteor
 */ 
 /*to do:
-SUBMIT FORM ON BUTTON CLICK, NOT componentmount
-add loading to redux state
-switch to URL parameters
---api call for playlist submit
---handle errors and check for parameters on playlists results page
---type ahead for genres
-prevent double tracks in playlists
---add and remove tracks
+-If subsetSum finds number equal to target or within range, break
+-Reset state on search
+
 */
