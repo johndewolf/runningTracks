@@ -13,8 +13,8 @@ const CreatePlaylist = (props) => {
 					<form onSubmit={props.onPlaylistSubmit}>
 						{formFields}
 
-						<button onClick={props.onAddFieldGroup} type='button'>Click!</button>
-						<button type='button' type="submit" className='margin-top'>Go!</button>
+						<button onClick={props.onAddFieldGroup} type='button'>Add Mile</button>
+						<button type='button' type="submit" className='margin-top'>Generate Playlist</button>
 					</form>
 				</div>
 			</div>

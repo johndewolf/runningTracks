@@ -103,16 +103,16 @@ function getSpotifyData(timeRemaining, genre, min_energy, max_energy) {
 	var returnTracks = [];
 
 	response = spotifyRecommendation(genre, min_energy, max_energy);
-
 	if (response.statusCode === 200) {
-
-			var tracks = response.data.tracks;
-
-			if (response.data.tracks.length === 0) {
-				returnTracks.push('there was an error');
+			tracks = response.data.tracks;
+			if (tracks.length === 0) {
+				returnTracks.push('error');
+				returnTracks.push('There were no tracks found for these search params');
 			}
-
-			var returnTracks = findOptimalSubset(tracks, timeRemaining);
+			else {
+				var returnTracks = findOptimalSubset(tracks, timeRemaining);
+			}
+			
 	} else {
 		returnTracks.push('there was an error');
 	}

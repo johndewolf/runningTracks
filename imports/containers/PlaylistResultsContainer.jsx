@@ -28,25 +28,35 @@ class PlaylistResultsContainer extends Component {
       browserHistory.push('/');
     } else {
       var formData = store.getState().formReducer;
+      
       Meteor.call('getSpotifyTracks',
         formData,
         function(error, result) {
 
         if (result) {
+          if (result[0] === 'error') {
+            app.setState({
+              spotifyData: "ERRORRRR",
+              isLoading: false
+            })
+          }
+          else {
             store.dispatch(addTracks(result))
             app.setState({
               isLoading: false
             })
           }
-          else {
-            app.setState({
-              spotifyData: "Please login re-apply",
-              isLoading: false
-            })
-          }
-        });
+        }
+        else {
+          app.setState({
+            spotifyData: "Please login re-apply",
+            isLoading: false
+          })
+        }
+      });
     }
   }
+
 
   render() {
   return (

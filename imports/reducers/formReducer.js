@@ -4,7 +4,7 @@ const initialState = [{
   mile: 1,
   genre: "",
   tempo: "0.1|0.2",
-  time: 0
+  time: 5
 }]
 
 const field = (state, action) => {
@@ -29,7 +29,10 @@ const formReducer = (state = initialState, action) => {
         field(t, action)
       )
     case types.ADD_FIELD_GROUP:
-      return (state.concat({mile: action.addFieldGroup, genre: "",  tempo: "0.1|0.2", time: 0}))
+      var newGroup = Object.assign({}, initialState[0], {
+        mile: state.length + 1
+      })
+      return (state.concat(newGroup))
     case types.RESET_FIELDS:
       return initialState
     default:

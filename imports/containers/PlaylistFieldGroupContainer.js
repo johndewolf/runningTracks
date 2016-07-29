@@ -38,17 +38,19 @@ class PlaylistFieldGroupContainer extends Component {
         onUpdateGenre={this.handleGenreUpdate.bind(this)}
         onUpdateTime={this.handleTimeUpdate.bind(this)}
         availableGenres={this.state.availableGenres}
-        time={this.props.time} />
+        time={this.props.time}
+        mile={this.props.mile} />
   }
 };
 
 const mapStateToProps = function(store, ownProps) {
-
-  var currentTime = store.formReducer.filter(function(mile) {
+  var currentMile = store.formReducer.filter(function(mile) {
     return mile.mile == ownProps.mile
-  })[0].time;
+  });
+
   return {
-    time: currentTime
+    mile: currentMile[0].mile,
+    time: currentMile[0].time
   };
 };
 

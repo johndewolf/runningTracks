@@ -6,6 +6,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, time, g
 	})
 	return (
 				<div>
+					<h3>Mile {mile}</h3>
 					<div className="form-group">
 						<label htmlFor="tempo">Tempo</label>
 						<select name="tempo" id="tempo" className='dropDown' onChange={onUpdateTempo} > 
@@ -22,7 +23,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, time, g
 							placeholder='Goal Time'
 							type='range'
 							id="length"
-							defaultValue='0'
+							defaultValue='5'
 							step='1'
 							min='2'
 							max='60'

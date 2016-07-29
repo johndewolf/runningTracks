@@ -1,9 +1,8 @@
 import * as types from '../actions/action-types.js';
-const initialState = {
-	spotifyData: []
-};
-
-const playlistReducer = (state = initialState, action) => {
+intialState = {
+  spotifyData: []
+}
+const playlistReducer = (state = intialState, action) => {
   switch (action.type) {
     case types.ADD_TRACKS:
       return Object.assign({}, state, {
