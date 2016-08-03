@@ -101,13 +101,14 @@ function spotifyGenreSeeds() {
 
 function getSpotifyData(timeRemaining, genre, min_energy, max_energy) {
 	var returnTracks = [];
-
+	var errorObj = {artists: [{name: "Error"}], name: "No data found for this parameter", duration_ms: 0}
 	response = spotifyRecommendation(genre, min_energy, max_energy);
 	if (response.statusCode === 200) {
 			tracks = response.data.tracks;
 			if (tracks.length === 0) {
-				returnTracks.push('error');
-				returnTracks.push('There were no tracks found for these search params');
+				// errorObj.id = Math.floor(Math.random()*100000);
+				// returnTracks.push(errorObj);
+				console.log('no data');
 			}
 			else {
 				var returnTracks = findOptimalSubset(tracks, timeRemaining);

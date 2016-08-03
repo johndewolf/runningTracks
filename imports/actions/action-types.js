@@ -6,3 +6,5 @@ export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const UPDATE_FIELD = 'UPDATE_FIELD';
 export const ADD_FIELD_GROUP = 'ADD_FIELD_GROUP';
 export const RESET_FIELDS = 'RESET_FIELDS';
+export const RESET_FORM_GROUPS = 'RESET_FORM_GROUPS';
+export const ADD_GENRES = 'ADD_GENRES';

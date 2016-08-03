@@ -1,9 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 
-const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, time, genre, availableGenres, mile}) => {
+const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, genre, availableGenres, fieldGroups, mile}) => {
 	var genreList = availableGenres.map(function(genre,i) {
 			return <option value={genre} key={i} />
 	})
+
+  var currentTime = fieldGroups.filter(function(group) {
+  	return group.mile === mile;
+  })[0].time;
+
 	return (
 				<div>
 					<h3>Mile {mile}</h3>
@@ -17,7 +22,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, time, g
 					</div>
 					<div className="form-group">
 						<label htmlFor="length">Playlist Length</label>
-						<p>{time || 0} minutes</p>
+						<p>{currentTime || 0} minutes</p>
 						<input
 							className='form-control'
 							placeholder='Goal Time'

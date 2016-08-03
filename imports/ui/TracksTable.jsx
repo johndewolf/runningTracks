@@ -29,10 +29,9 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 							<th>Duration</th>
 						</tr>
 					</thead>
-
-				  <ReactCSSTransitionGroup transitionName="example" component="tbody" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-					{tracks.length > 0 ? tracks : <tr><td>Sorry no results, please try again</td></tr>}
-					</ReactCSSTransitionGroup>
+					<tbody>
+						{tracks.length > 0 ? tracks : <tr><td>Sorry no results, please try again</td></tr>}
+					</tbody>
 				</table>
 			</div>
 		)

@@ -3,22 +3,13 @@ import store from '../store';
 import { connect } from 'react-redux';
 import PlaylistFieldGroup from '../ui/PlaylistFieldGroup.jsx';
 import { updateField } from '../actions/user-actions';
+import { addGenres } from '../actions/user-actions';
 
 class PlaylistFieldGroupContainer extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      availableGenres: []
-    }
-  }
-  componentDidMount() {
-    var app = this;
+  componentWillMount() {
     Meteor.call('getGenreSeeds', function(error, result) {
       if (result) {
-        app.setState({
-          availableGenres: result  
-        })  
+        store.dispatch(addGenres(result))
       }
     })
   }
@@ -37,21 +28,17 @@ class PlaylistFieldGroupContainer extends Component {
         onUpdateTempo={this.handleTempoUpdate.bind(this)}
         onUpdateGenre={this.handleGenreUpdate.bind(this)}
         onUpdateTime={this.handleTimeUpdate.bind(this)}
-        availableGenres={this.state.availableGenres}
-        time={this.props.time}
-        mile={this.props.mile} />
+        availableGenres={this.props.availableGenres}
+        mile={this.props.mile}
+        fieldGroups={this.props.fieldGroups} />
   }
 };
 
-const mapStateToProps = function(store, ownProps) {
-  var currentMile = store.formReducer.filter(function(mile) {
-    return mile.mile == ownProps.mile
-  });
-
+const mapStateToProps = function(store) {
   return {
-    mile: currentMile[0].mile,
-    time: currentMile[0].time
-  };
+    fieldGroups: store.formReducer,
+    availableGenres: store.genres
+  }
 };
 
 export default connect(mapStateToProps)(PlaylistFieldGroupContainer);

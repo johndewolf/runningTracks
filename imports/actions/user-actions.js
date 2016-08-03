@@ -42,6 +42,13 @@ export const resetFields = (resetFields) => {
   }
 }
 
+export const addGenres = (genres) => {
+  return {
+    type: types.ADD_GENRES,
+    genres
+  }
+}
+
 export const updateField = (updateField) => {
   return {
     type: types.UPDATE_FIELD,
