@@ -1,4 +1,3 @@
-import assign from 'lodash.assign';
 import * as types from '../actions/action-types.js';
 const initialState = [{
   mile: 1,
@@ -33,6 +32,11 @@ const formReducer = (state = initialState, action) => {
         mile: state.length + 1
       })
       return (state.concat(newGroup))
+    case types.REMOVE_FIELD_GROUP:
+    return state.filter(function(group) {
+      return group.mile !== action.mile
+    })
+    
     case types.RESET_FIELDS:
       return initialState
     default:

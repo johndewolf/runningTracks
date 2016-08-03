@@ -61,3 +61,9 @@ export const addFieldGroup = (addFieldGroup) => {
     addFieldGroup
   };
 }
+export const removeFieldGroup = (mile) => {
+  return {
+    type: types.REMOVE_FIELD_GROUP,
+    mile
+  };
+}

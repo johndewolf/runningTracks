@@ -3,6 +3,7 @@ import store from '../store';
 import { connect } from 'react-redux';
 import PlaylistFieldGroup from '../ui/PlaylistFieldGroup.jsx';
 import { updateField } from '../actions/user-actions';
+import { removeFieldGroup } from '../actions/user-actions';
 import { addGenres } from '../actions/user-actions';
 
 class PlaylistFieldGroupContainer extends Component {
@@ -22,12 +23,17 @@ class PlaylistFieldGroupContainer extends Component {
   handleTimeUpdate(e) {
     store.dispatch(updateField({mile: this.props.mile, field: 'time',  value: e.target.value}))
   }
+
+  handleDeleteFieldGroup() {
+    store.dispatch(removeFieldGroup(this.props.mile));
+  }
   
   render() {    
     return <PlaylistFieldGroup
         onUpdateTempo={this.handleTempoUpdate.bind(this)}
         onUpdateGenre={this.handleGenreUpdate.bind(this)}
         onUpdateTime={this.handleTimeUpdate.bind(this)}
+        onDeleteFieldGroup={this.handleDeleteFieldGroup.bind(this)}
         availableGenres={this.props.availableGenres}
         mile={this.props.mile}
         fieldGroups={this.props.fieldGroups} />

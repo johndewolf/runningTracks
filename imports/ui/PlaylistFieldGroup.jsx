@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, genre, availableGenres, fieldGroups, mile}) => {
+const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDeleteFieldGroup, genre, availableGenres, fieldGroups, mile}) => {
 	var genreList = availableGenres.map(function(genre,i) {
 			return <option value={genre} key={i} />
 	})
@@ -11,7 +11,14 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, genre, 
 
 	return (
 				<div>
-					<h3>Mile {mile}</h3>
+					<div className="row between-xs middle-xs">
+						<div className="col-xs-6">
+						<h3>Mile {mile}</h3>
+						</div>
+						<div className="col-xs-6 text-right">
+						<i className="material-icons delete" onClick={onDeleteFieldGroup}>remove_circle</i>
+						</div>
+					</div>
 					<div className="form-group">
 						<label htmlFor="tempo">Tempo</label>
 						<select name="tempo" id="tempo" className='dropDown' onChange={onUpdateTempo} > 
