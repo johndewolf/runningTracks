@@ -250,6 +250,17 @@ i.material-icons.delete {
 
 #profile-dropdown {
   margin-right: 37px;
+  position: absolute;
+  right: 28px;
+  top: 68px;
+  border: 1px solid #E2DADA;
+  padding: 10px 20px;
+  background: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+#profile-dropdown:hover {
+  background-color: #F1F1F1;
 }
 /*
 .example-appear {

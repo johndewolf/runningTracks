@@ -7,8 +7,7 @@ const Home = ({onSpotifyLogin, username, loggedIn}) => {
   else if (loggedIn === true) {
     var button = 
       <div>
-        <Link to="/quick" className="btn margin-bottom margin-top">Quick Playlist</Link>
-        <Link to="/trackPerMile" className="btn margin-bottom margin-top">Track per Mile</Link>
+        <Link to="/quick" className="btn margin-bottom margin-top">Create Playlist</Link>
       </div>
   }
   
