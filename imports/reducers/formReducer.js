@@ -1,4 +1,5 @@
 import * as types from '../actions/action-types.js';
+
 const initialState = [{
   mile: 1,
   genre: "",
