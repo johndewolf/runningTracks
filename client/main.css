@@ -173,10 +173,33 @@ button:hover, .btn:hover {
 
 i.material-icons.delete {
   font-size: 1.25em;
-  color: #ce0000;
+  color: #949494;
   cursor: pointer;
 }
 
+i.material-icons.delete:hover {
+  color: #ce0000;
+}
+
+.addMile {
+  line-height: 1;
+  margin-top: 1em;
+  font-size: 18px;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+  cursor: pointer;
+  color: #3498db;
+}
+
+.addMile i.material-icons {
+  font-size: 18px;
+  position: relative;
+  top: 1px;
+  color: #3498db;
+}
+.addMile:hover {
+  background-color: #f1f1f1;
+}
 /*Utility Classes*/
 .centered-block {
   margin: 0 auto;
@@ -198,6 +221,7 @@ i.material-icons.delete {
 .text-right {
   text-align: right;
 }
+
 
 @media (min-width: 768px) {
   .flex-right {

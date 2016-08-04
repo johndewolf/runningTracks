@@ -16,7 +16,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 						<h3>Mile {mile}</h3>
 						</div>
 						<div className="col-xs-6 text-right">
-						<i className="material-icons delete" onClick={onDeleteFieldGroup}>remove_circle</i>
+						{mile > 1 ? <i className="material-icons delete" onClick={onDeleteFieldGroup}>remove_circle</i> : null }
 						</div>
 					</div>
 					<div className="form-group">

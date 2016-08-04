@@ -38,9 +38,7 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 				<TracksTableContainer />
 				{showImport ? <ImportPlaylistContainer spotifyData={spotifyData} /> :
 				<div className="margin-top">
-						<p>Click below to import into your Spotify account</p>
-						<a className="btn" onClick={onImportClick}>Import</a>
-
+						<div className="addMile" onClick={onImportClick}><i className="material-icons">add_circle_outline</i> <span>Import to Your Account</span></div>
 						<p className="margin-top">Or try another search</p>
 						<Link to="/quick" className="btn">Search Again</Link>
 				</div> }
