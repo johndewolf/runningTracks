@@ -136,6 +136,32 @@ input[type=range]::-moz-range-thumb {
   margin-top: -8px;
 }
 
+/*loading screen*/
+.load-container .circle {
+  display: block;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  border: 10px solid rgba(53, 53, 53, 0.2);
+  border-top-color: #3498db;
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 th {
   text-align: left;
 }

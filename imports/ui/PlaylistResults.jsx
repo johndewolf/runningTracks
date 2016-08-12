@@ -25,7 +25,10 @@ const PlaylistResults = ({spotifyData, isLoading}) => {
 	if ( isLoading === true ) {
 		return (
 			<div className="container">
-				<p>Loading...</p>
+				<h1 className="text-center">Loading...</h1>
+				<div className="load-container">
+    			<div className="circle"></div>
+  			</div>
 			</div>
 		)
 	}
