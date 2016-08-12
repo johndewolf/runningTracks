@@ -8,7 +8,8 @@ class ImportPlaylistContainer extends Component {
       tracks: "",
       playlistName: "",
       playlistSubmitted: false,
-      returnData: ""
+      returnData: "",
+      showImport: false
     }
   }
 
@@ -21,6 +22,16 @@ class ImportPlaylistContainer extends Component {
   	this.setState({
   		playlistName: e.target.value
   	})
+  }
+  handleShowImport() {
+    this.setState({
+      showImport: true
+    })
+  }
+  handleCloseImport() {
+    this.setState({
+      showImport: false
+    })
   }
   handleImportPlaylist(e) {
   	e.preventDefault();
@@ -48,6 +59,9 @@ class ImportPlaylistContainer extends Component {
     	onNameUpdate={this.handleNameUpdate.bind(this)}
       returnData={this.state.returnData}
     	onImportPlaylist={this.handleImportPlaylist.bind(this)}
+      onShowImport={this.handleShowImport.bind(this)}
+      onCloseImport={this.handleCloseImport.bind(this)}
+      showImport={this.state.showImport}
     	playlistSubmitted={this.state.playlistSubmitted}  />
     );
   }

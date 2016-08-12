@@ -4,7 +4,7 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 import TracksTableContainer from '../containers/TracksTableContainer';
 import AlbumArt from './AlbumArt.jsx';
 
-const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) => {
+const PlaylistResults = ({spotifyData, isLoading}) => {
 	function millisToMinutesAndSeconds(millis) {
 		  var minutes = Math.floor(millis / 60000);
 		  var seconds = ((millis % 60000) / 1000).toFixed(0);
@@ -43,12 +43,11 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 					</div>
 				</div>
 				<TracksTableContainer />
-				{showImport ? <ImportPlaylistContainer spotifyData={spotifyData} /> :
 				<div className="margin-top">
-						<div className="addMile" onClick={onImportClick}><i className="material-icons">add_circle_outline</i> <span>Import to Your Account</span></div>
-						<p className="margin-top">Or try another search</p>
-						<Link to="/quick" className="btn">Search Again</Link>
-				</div> }
+					<ImportPlaylistContainer spotifyData={spotifyData} />
+					<p className="margin-top">Or try another search</p>
+					<Link to="/quick" className="btn">Search Again</Link>
+				</div>
 			</div>
 		)
 	}

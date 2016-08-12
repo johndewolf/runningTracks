@@ -11,15 +11,7 @@ class PlaylistResultsContainer extends Component {
 
     this.state = {
       isLoading: true,
-      showImport: false
     };
-  }
-
-  handleImportClick() {
-    var app = this;
-    app.setState({
-      showImport: true
-    })
   }
 
   componentWillMount() {
@@ -62,9 +54,7 @@ class PlaylistResultsContainer extends Component {
   return (
       <PlaylistResults
         isLoading={this.state.isLoading} 
-        spotifyData={this.props.spotifyData}
-        showImport={this.state.showImport}
-        onImportClick={this.handleImportClick.bind(this)} />
+        spotifyData={this.props.spotifyData} />
     )
   }
 }
