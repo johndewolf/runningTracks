@@ -164,6 +164,8 @@ input[type=range]::-moz-range-thumb {
 
 th {
   text-align: left;
+  background-color: #585858;
+  color: white;
 }
 
 table {
@@ -188,6 +190,11 @@ button, .btn {
   color: black;
   display: inline-block;
   font-size: 1em;
+}
+
+button.warning:hover, .btn.warning:hover {
+  border-color: #ce0000;
+  color: #ce0000;
 }
 
 button:hover, .btn:hover {
@@ -215,6 +222,7 @@ i.material-icons.delete:hover {
   padding: 0.5em 0;
   cursor: pointer;
   color: #3498db;
+  transition: background-color 0.35s;
 }
 
 .addMile i.material-icons {
