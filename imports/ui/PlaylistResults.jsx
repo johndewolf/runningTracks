@@ -15,6 +15,12 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 			previousValue + track.duration_ms
 		)
 	}, 0)
+	let duration = 0;
+	spotifyData.forEach(function(track, i) {
+		if (track !== null) {
+			duration += track.duration_ms;	
+		}		
+	})
 
 	if ( isLoading === true ) {
 		return (
@@ -22,14 +28,15 @@ const PlaylistResults = ({spotifyData, isLoading, onImportClick, showImport}) =>
 				<p>Loading...</p>
 			</div>
 		)
-	} 
+	}
+
 	else {
 		return (
 			<div className="container">
 				<div className="flexcontainer-row">
 					<div className="flex-left">
 						<h1>RESULTS</h1>
-						<p>{spotifyData.length} tracks, {millisToMinutesAndSeconds(trackLength)}</p>
+						<p>{spotifyData.length} tracks, {millisToMinutesAndSeconds(duration)}</p>
 					</div>
 					<div className="flex-right">
 						<AlbumArt spotifyData={spotifyData} />

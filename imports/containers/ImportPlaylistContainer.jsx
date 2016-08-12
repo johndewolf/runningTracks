@@ -39,7 +39,6 @@ class ImportPlaylistContainer extends Component {
         })
       }
     });
-  	console.log('import action goes here')
   }
   render() {
     return (

@@ -4,7 +4,7 @@ const initialState = [{
   mile: 1,
   genre: "",
   tempo: "0.1|0.2",
-  time: 5
+  time: 480000
 }]
 
 const field = (state, action) => {

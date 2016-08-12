@@ -6,10 +6,10 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 		  var seconds = ((millis % 60000) / 1000).toFixed(0);
 		  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 		}
-		var playListLength = 0;
-		var tracks = spotifyData.map(function(track,i) {
+
+		var tracks = spotifyData.map(function(track, i) {
 			return (
-				<tr key={i}>
+				<tr key={i}>		
 					<td>{track.artists[0].name}</td>
 					<td>{track.name}</td>
 					<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
@@ -17,7 +17,7 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 				</tr>
 			)
 		})
-
+		console.log(spotifyData);
 		return (
 			<div>
 				<table>
@@ -26,6 +26,7 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 							<th>Artist</th>
 							<th>Song</th>
 							<th>Duration</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>

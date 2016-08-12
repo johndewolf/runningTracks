@@ -5,7 +5,7 @@ const AlbumArt = ({spotifyData}) => {
 	function albumArtPreview(track) {
 		return <img src={track.album.images[2].url} className="album-image" />
 	}
-	if (spotifyData.length > 4) {
+	if (spotifyData.length >= 4) {
 		return (
 			<div className="album-images">
 				{albumArtPreview(spotifyData[0])}

@@ -17,10 +17,11 @@ Meteor.methods({
 			min_tempo = mile.tempo.split('|')[0];
 			max_tempo = mile.tempo.split('|')[1];
 			genre = mile.genre.replace(' ', '-');			
-			timeRemaining = mile.time * 60000;
+			timeRemaining = mile.time;
 			var tracks = getSpotifyData(timeRemaining, genre, min_tempo, max_tempo);
 			returnTracks.push(tracks);
 		})
+
 		return [].concat.apply([], returnTracks);
 	},
 
@@ -111,7 +112,7 @@ function getSpotifyData(timeRemaining, genre, min_energy, max_energy) {
 				console.log('no data');
 			}
 			else {
-				var returnTracks = findOptimalSubset(tracks, timeRemaining);
+			var returnTracks = findOptimalSubset(tracks, timeRemaining);
 			}
 			
 	} else {
@@ -136,17 +137,22 @@ function findOptimalSubset(numbers, target) {
         solutions.push(partial);
       }
     }
-    for (var index = 0; index < numbers.length - 1;  index++) {
-      var n = numbers[index];
-      var remaining = numbers.slice(index + 1, numbers.length);
-      var newPartial = partial.concat(n);
-      subsetSum(remaining, target, newPartial);
+    for (var index = 0; index < numbers.length;  index++) {
+    	if (currentBest === 0) {
+				return solutions;
+        break;
+    	}
+    	else {
+	      var n = numbers[index];
+	      var remaining = numbers.slice(index + 1, numbers.length);
+	      var newPartial = partial.concat(n);
+	      subsetSum(remaining, target, newPartial);
+	    }
     }
     return solutions;
   }
   var subsets = subsetSum(numbers, target)
   return subsets[subsets.length - 1];
-
 }
 /*questions:
 URL parameters - better?
@@ -155,5 +161,6 @@ async server request with Meteor
 /*to do:
 -If subsetSum finds number equal to target or within range, break
 -Update form style
+-update number input
 -Update table style to show breakdown for miles
 */

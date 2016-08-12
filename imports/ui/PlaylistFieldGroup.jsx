@@ -9,8 +9,16 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
   	return group.mile === mile;
   })[0].time;
 
+  function millisToMinutesAndSeconds(millis) {
+	  var minutes = Math.floor(millis / 60000);
+	  var seconds = ((millis % 60000) / 1000).toFixed(0);
+	  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+	}
+
 	return (
+				
 				<div>
+
 					<div className="row between-xs middle-xs">
 						<div className="col-xs-6">
 						<h3>Mile {mile}</h3>
@@ -28,17 +36,18 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 						</select>
 					</div>
 					<div className="form-group">
-						<label htmlFor="length">Playlist Length</label>
-						<p>{currentTime || 0} minutes</p>
+						<label htmlFor="length">Mile Time Length</label>
+						<span className="time-value">{millisToMinutesAndSeconds(currentTime) || 0} minutes</span>
+
 						<input
 							className='form-control'
 							placeholder='Goal Time'
 							type='range'
 							id="length"
-							defaultValue='5'
-							step='1'
-							min='2'
-							max='60'
+							defaultValue='480000'
+							step='15000'
+							min='240000'
+							max='3600000'
 							required
 							onChange={onUpdateTime} />
 					</div>

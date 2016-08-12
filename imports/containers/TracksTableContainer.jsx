@@ -5,18 +5,7 @@ import { removeTrack, getTracks } from '../actions/user-actions';
 import TracksTable from '../ui/TracksTable.jsx';
 
 class TracksTableContainer extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-			spotifyData: []
-    }
-  }
-  componentDidMount() {
-  	this.setState({
-  		spotifyData: this.props.spotifyData
-  	})
-  }
   handleDeleteTrack(e) {
   	e.preventDefault();
   	var spotifyId = e.target.getAttribute('data-trackid');

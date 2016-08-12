@@ -41,7 +41,7 @@ class PlaylistResultsContainer extends Component {
             })
           }
           else {
-            store.dispatch(addTracks(result))
+            store.dispatch(addTracks(result));
             app.setState({
               isLoading: false
             })
