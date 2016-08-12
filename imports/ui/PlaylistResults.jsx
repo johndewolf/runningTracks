@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ImportPlaylistContainer from '../containers/ImportPlaylistContainer';
+import ResultsFooterContainer from '../containers/ResultsFooterContainer';
 import { Router, Route, Link, browserHistory } from 'react-router'
 import TracksTableContainer from '../containers/TracksTableContainer';
 import AlbumArt from './AlbumArt.jsx';
@@ -47,9 +47,7 @@ const PlaylistResults = ({spotifyData, isLoading}) => {
 				</div>
 				<TracksTableContainer />
 				<div className="margin-top">
-					<ImportPlaylistContainer spotifyData={spotifyData} />
-					<p className="margin-top">Or try another search</p>
-					<Link to="/quick" className="btn">Search Again</Link>
+					<ResultsFooterContainer />
 				</div>
 			</div>
 		)

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ImportPlaylist from '../ui/ImportPlaylist.jsx';
+import store from '../store';
+import { connect } from 'react-redux';
 class ImportPlaylistContainer extends Component {
   constructor(props) {
     super(props);
@@ -8,31 +10,16 @@ class ImportPlaylistContainer extends Component {
       tracks: "",
       playlistName: "",
       playlistSubmitted: false,
-      returnData: "",
-      showImport: false
+      returnData: ""
     }
   }
 
-  componentDidMount() {
-  	this.setState({
-  		tracks: this.props.spotifyData
-  	})
-  }
   handleNameUpdate(e) {
   	this.setState({
   		playlistName: e.target.value
   	})
   }
-  handleShowImport() {
-    this.setState({
-      showImport: true
-    })
-  }
-  handleCloseImport() {
-    this.setState({
-      showImport: false
-    })
-  }
+
   handleImportPlaylist(e) {
   	e.preventDefault();
     var app = this;
@@ -54,16 +41,19 @@ class ImportPlaylistContainer extends Component {
   render() {
     return (
     	<ImportPlaylist 
-    	tracks={this.state.tracks}
+    	spotifyData={this.props.spotifyData}
     	playlistName={this.state.playlistName}
     	onNameUpdate={this.handleNameUpdate.bind(this)}
       returnData={this.state.returnData}
     	onImportPlaylist={this.handleImportPlaylist.bind(this)}
-      onShowImport={this.handleShowImport.bind(this)}
-      onCloseImport={this.handleCloseImport.bind(this)}
-      showImport={this.state.showImport}
     	playlistSubmitted={this.state.playlistSubmitted}  />
     );
   }
 }
-export default ImportPlaylistContainer;
+const mapStateToProps = function(store) {
+  return {
+    spotifyData: store.playlistReducer.spotifyData
+  };
+};
+
+export default connect(mapStateToProps)(ImportPlaylistContainer);

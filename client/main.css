@@ -234,6 +234,27 @@ i.material-icons.delete:hover {
 .addMile:hover {
   background-color: #f1f1f1;
 }
+.results-footer {
+  padding-left: 0;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  border-top: 1px solid #F1F1F1;
+  text-align: center;
+  padding-top: 0.5em;
+}
+.results-footer li {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+.results-footer a {
+  text-decoration: none;
+}
+.results-footer .material-icons {
+  position: relative;
+  top: 6px;
+  margin-right: 6px;
+}
+
 /*Utility Classes*/
 .centered-block {
   margin: 0 auto;
