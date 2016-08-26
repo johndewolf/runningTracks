@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-
-const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDeleteFieldGroup, genre, availableGenres, fieldGroups, mile}) => {
+import { Motion, spring } from 'react-motion';
+const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDeleteFieldGroup, genre, availableGenres, fieldGroups, mile, styles}) => {
 	var genreList = availableGenres.map(function(genre,i) {
 			return <option value={genre} key={i} />
 	})
@@ -16,8 +16,12 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 	}
 
 	return (
-				
-				<div>
+				<Motion
+				  defaultStyle={{x: 0, y: 0}}
+				  style={{x: spring(1), y: spring(320)}}>
+				  {style => 
+				  
+				 <div style={{opacity: style.x, height: style.y}}>
 
 					<div className="row between-xs middle-xs">
 						<div className="col-xs-6">
@@ -65,6 +69,10 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 						{genreList}
 					</datalist>
 				</div>
+
+				  }
+				</Motion>
+				
 				)
 }
 export default PlaylistFieldGroup

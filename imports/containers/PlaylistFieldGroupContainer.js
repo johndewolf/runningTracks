@@ -36,7 +36,8 @@ class PlaylistFieldGroupContainer extends Component {
         onDeleteFieldGroup={this.handleDeleteFieldGroup.bind(this)}
         availableGenres={this.props.availableGenres}
         mile={this.props.mile}
-        fieldGroups={this.props.fieldGroups} />
+        fieldGroups={this.props.fieldGroups}
+        styles={this.props.styles} />
   }
 };
 

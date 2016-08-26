@@ -28,7 +28,6 @@ class CreatePlaylistContainer extends Component {
         onPlaylistSubmit={this.handlePlaylistSubmit.bind(this)}
         onAddFieldGroup={this.handleAddFieldGroup.bind(this)}
         formGroups={this.props.formGroups} />
-
       </div>
     )
   }
