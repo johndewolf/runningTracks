@@ -23,8 +23,9 @@ class ImportPlaylistContainer extends Component {
   handleImportPlaylist(e) {
   	e.preventDefault();
     var app = this;
-    Meteor.call('createPlaylist', app.state.playlistName, app.state.tracks, function(error, result) {
+    Meteor.call('createPlaylist', app.state.playlistName, app.props.spotifyData, function(error, result) {
       if (result) {
+        console.log(result);
         app.setState({
           returnData: result,
           playlistSubmitted: true

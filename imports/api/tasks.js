@@ -5,9 +5,11 @@ Meteor.methods({
 		return response.data.body.name;
 	},
 	getGenreSeeds: function() {
-		var response = spotifyGenreSeeds();
-		if (response.statusCode === 200) {
-			return response.data.genres;
+		try {
+			return spotifyGenreSeeds().data.genres;	
+		}
+		catch(e) {
+			return 'error'
 		}
 	},
 	getSpotifyTracks: function(formData) {
@@ -36,6 +38,7 @@ Meteor.methods({
 	},
 
 	createPlaylist: function(playlistName, tracks) {
+		console.log('importing');
 		var spotifyApi = new SpotifyWebApi();
 		var trackUris = tracks.map(function(track) {
       return track.uri;

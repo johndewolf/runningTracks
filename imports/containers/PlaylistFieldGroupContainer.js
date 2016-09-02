@@ -10,7 +10,12 @@ class PlaylistFieldGroupContainer extends Component {
   componentWillMount() {
     Meteor.call('getGenreSeeds', function(error, result) {
       if (result) {
-        store.dispatch(addGenres(result))
+        if (result === 'error') {
+          console.log('log in required')
+        } else {
+          store.dispatch(addGenres(result))  
+        }
+        
       }
     })
   }
