@@ -18,9 +18,9 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 	return (
 				<Motion
 				  defaultStyle={{x: 0, y: 0}}
-				  style={{x: spring(1), y: spring(320)}}>
-				  {style => 
-				  
+				  style={{x: spring(1), y: spring(370)}}>
+				  {style =>
+
 				 <div style={{opacity: style.x, height: style.y}}>
 
 					<div className="row between-xs middle-xs">
@@ -33,7 +33,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 					</div>
 					<div className="form-group">
 						<label htmlFor="tempo">Tempo</label>
-						<select name="tempo" id="tempo" className='dropDown' onChange={onUpdateTempo} > 
+						<select name="tempo" id="tempo" className='dropDown' onChange={onUpdateTempo} >
 							<option value="0.1|0.2">Low</option>
 							<option value="0.4|0.7">Medium</option>
 							<option value="0.9|1">High</option>
@@ -72,7 +72,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 
 				  }
 				</Motion>
-				
+
 				)
 }
 export default PlaylistFieldGroup
