@@ -11,9 +11,13 @@ class PlaylistResultsContainer extends Component {
 
     this.state = {
       isLoading: true,
+      errors: []
     };
   }
-
+  handleRemoveBanner(e) {
+    var banner = document.getElementById("warning-banner");
+    banner.parentNode.removeChild(banner);
+  }
   componentWillMount() {
     var app = this;
     if (store.getState().userReducer.loggedIn === false) {
@@ -33,10 +37,15 @@ class PlaylistResultsContainer extends Component {
             })
           }
           else {
-            store.dispatch(addTracks(result));
+            store.dispatch(addTracks(result.tracks));
             app.setState({
               isLoading: false
-            })
+            });
+            if (result.errors.length > 0) {
+              app.setState({
+                errors: result.errors
+              })
+            }
           }
         }
         else {
@@ -54,7 +63,9 @@ class PlaylistResultsContainer extends Component {
   return (
       <PlaylistResults
         isLoading={this.state.isLoading}
-        spotifyData={this.props.spotifyData} />
+        errors={this.state.errors}
+        spotifyData={this.props.spotifyData}
+        onRemoveBanner={this.handleRemoveBanner.bind(this)}/>
     )
   }
 }

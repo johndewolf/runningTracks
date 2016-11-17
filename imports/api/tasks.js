@@ -15,6 +15,7 @@ Meteor.methods({
 	getSpotifyTracks: function(formData) {
 		var min_tempo, max_tempo, genre, timeRemaining, response;
 		var returnTracks = [];
+		var errorData = [];
 		formData.forEach(function(mile) {
 			min_tempo = mile.tempo.split('|')[0];
 			max_tempo = mile.tempo.split('|')[1];
@@ -23,11 +24,15 @@ Meteor.methods({
 			var tracks = getSpotifyData(timeRemaining, genre, min_tempo, max_tempo, mile.mile);
 			tracks.forEach(function(innerTrack) {
 				innerTrack.mile = mile.mile;
+				if (innerTrack.artists[0].name === "Error") {
+					errorData.push(mile.mile);
+				}
 			});
 			returnTracks.push(tracks);
 		})
 
-		return [].concat.apply([], returnTracks);
+		var flattendTracks = [].concat.apply([], returnTracks);
+		return {tracks: flattendTracks, errors: errorData};
 	},
 
 	getFollowerCount: function() {
@@ -115,8 +120,7 @@ function getSpotifyData(timeRemaining, genre, min_energy, max_energy) {
 	if (response.statusCode === 200) {
 			tracks = response.data.tracks;
 			if (tracks.length === 0) {
-				// errorObj.id = Math.floor(Math.random()*100000);
-				// returnTracks.push(errorObj);
+				errorObj.id = (Math.floor(Math.random()*100000)).toString();
 				returnTracks.push(errorObj)
 			}
 			else {

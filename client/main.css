@@ -3,7 +3,7 @@
 body {
   font-family: sans-serif;
   background-color: #F1F1F1;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
   font-family: Ubuntu, Helvetica Neue,Helvetica;
 }
@@ -205,6 +205,11 @@ button:hover, .btn:hover {
     cursor: pointer; cursor: hand;
 }
 
+.flash-banner i.material-icons {
+  font-size: 16px;
+  cursor: pointer;
+}
+
 i.material-icons.delete {
   font-size: 1.25em;
   color: #949494;
@@ -214,6 +219,10 @@ i.material-icons.delete {
 
 i.material-icons.delete:hover {
   color: #ce0000;
+}
+
+.red-border {
+  border: 1px solid #ce0000;
 }
 
 .addMile {
