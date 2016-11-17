@@ -3,7 +3,9 @@ import React, { Component, PropTypes } from 'react';
 const AlbumArt = ({spotifyData}) => {
 
 	function albumArtPreview(track) {
-		return <img src={track.album.images[2].url} className="album-image" />
+		if (track.album) {
+			return <img src={track.album.images[2].url} className="album-image" />
+		}
 	}
 	if (spotifyData.length >= 4) {
 		return (
@@ -13,14 +15,14 @@ const AlbumArt = ({spotifyData}) => {
 				{albumArtPreview(spotifyData[2])}
 				{albumArtPreview(spotifyData[3])}
 			</div>
-		)	
+		)
 	}
 	else {
 		return (
 			null
 		)
 	}
-	
+
 }
 
 export default AlbumArt

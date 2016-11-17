@@ -9,7 +9,8 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 
 		var tracks = spotifyData.map(function(track, i) {
 			return (
-				<tr key={i}>		
+				<tr key={i}>
+					<td>{track.mile}</td>
 					<td>{track.artists[0].name}</td>
 					<td>{track.name}</td>
 					<td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
@@ -17,12 +18,13 @@ const TracksTable = ({spotifyData, onDeleteTrack}) => {
 				</tr>
 			)
 		})
-		console.log(spotifyData);
+
 		return (
 			<div>
 				<table>
 					<thead>
 						<tr>
+							<th>Mile</th>
 							<th>Artist</th>
 							<th>Song</th>
 							<th>Duration</th>

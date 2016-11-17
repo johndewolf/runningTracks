@@ -20,7 +20,7 @@ class PlaylistResultsContainer extends Component {
       browserHistory.push('/');
     } else {
       var formData = store.getState().formReducer;
-      
+
       Meteor.call('getSpotifyTracks',
         formData,
         function(error, result) {
@@ -53,7 +53,7 @@ class PlaylistResultsContainer extends Component {
   render() {
   return (
       <PlaylistResults
-        isLoading={this.state.isLoading} 
+        isLoading={this.state.isLoading}
         spotifyData={this.props.spotifyData} />
     )
   }

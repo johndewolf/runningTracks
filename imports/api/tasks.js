@@ -6,7 +6,7 @@ Meteor.methods({
 	},
 	getGenreSeeds: function() {
 		try {
-			return spotifyGenreSeeds().data.genres;	
+			return spotifyGenreSeeds().data.genres;
 		}
 		catch(e) {
 			return 'error'
@@ -18,9 +18,12 @@ Meteor.methods({
 		formData.forEach(function(mile) {
 			min_tempo = mile.tempo.split('|')[0];
 			max_tempo = mile.tempo.split('|')[1];
-			genre = mile.genre.replace(' ', '-');			
+			genre = mile.genre.replace(' ', '-');
 			timeRemaining = mile.time;
-			var tracks = getSpotifyData(timeRemaining, genre, min_tempo, max_tempo);
+			var tracks = getSpotifyData(timeRemaining, genre, min_tempo, max_tempo, mile.mile);
+			tracks.forEach(function(innerTrack) {
+				innerTrack.mile = mile.mile;
+			});
 			returnTracks.push(tracks);
 		})
 
@@ -41,7 +44,9 @@ Meteor.methods({
 		console.log('importing');
 		var spotifyApi = new SpotifyWebApi();
 		var trackUris = tracks.map(function(track) {
-      return track.uri;
+			if (track.uri) {
+				return track.uri;
+			}
     });
 		var response = spotifyApi.createPlaylist(Meteor.user().services.spotify.id, playlistName, { public: false });
 
@@ -57,7 +62,7 @@ Meteor.methods({
 
 	checkAccessToken: function() {
 		var spotifyApi = new SpotifyWebApi();
-		var response = spotifyApi.getMe();	
+		var response = spotifyApi.getMe();
 
 		if (response.error && response.error.statusCode === 401) {
 			return false
@@ -105,19 +110,19 @@ function spotifyGenreSeeds() {
 
 function getSpotifyData(timeRemaining, genre, min_energy, max_energy) {
 	var returnTracks = [];
-	var errorObj = {artists: [{name: "Error"}], name: "No data found for this parameter", duration_ms: 0}
+	var errorObj = {artists: [{name: "Error"}], name: "No data found for the search parameter", duration_ms: 0}
 	response = spotifyRecommendation(genre, min_energy, max_energy);
 	if (response.statusCode === 200) {
 			tracks = response.data.tracks;
 			if (tracks.length === 0) {
 				// errorObj.id = Math.floor(Math.random()*100000);
 				// returnTracks.push(errorObj);
-				console.log('no data');
+				returnTracks.push(errorObj)
 			}
 			else {
 			var returnTracks = findOptimalSubset(tracks, timeRemaining);
 			}
-			
+
 	} else {
 		returnTracks.push('there was an error');
 	}
@@ -137,6 +142,7 @@ function findOptimalSubset(numbers, target) {
       diffFromTarget = Math.abs(target - solution);
       if ( currentBest === undefined || diffFromTarget < currentBest ){
         currentBest = diffFromTarget;
+				console.log(partial);
         solutions.push(partial);
       }
     }
@@ -160,7 +166,7 @@ function findOptimalSubset(numbers, target) {
 /*questions:
 URL parameters - better?
 async server request with Meteor
-*/ 
+*/
 /*to do:
 -If subsetSum finds number equal to target or within range, break
 -Update form style
