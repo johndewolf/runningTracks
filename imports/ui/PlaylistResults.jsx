@@ -3,6 +3,7 @@ import ResultsFooterContainer from '../containers/ResultsFooterContainer';
 import { Router, Route, Link, browserHistory } from 'react-router'
 import TracksTableContainer from '../containers/TracksTableContainer';
 import AlbumArt from './AlbumArt.jsx';
+import FlashBannerContainer from '../containers/FlashBannerContainer.jsx'
 
 const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 	function millisToMinutesAndSeconds(millis) {
@@ -23,27 +24,14 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 	})
 	function flashMessage(errorArray) {
 		if (errorArray.length === 1) {
-			return (
-				<div className="container flash-banner red-border" id="warning-banner">
-					<div className="row">
-						<div className="col-xs-6">There was an error with Mile {errorArray[0]}</div>
-						<div className="col-xs-6 text-right"><i className="material-icons" onClick={onRemoveBanner}>close</i></div>
-					</div>
-				</div>
-
-
-
-			)
-		} else {
-			return (
-				<div className="container flash-banner red-border" id="warning-banner">
-					<div className="row">
-						<div className="col-xs-6">There were errors with Miles {errorArray.join(',')}</div>
-						<div className="col-xs-6 text-right"><i className="material-icons" onClick={onRemoveBanner}>close</i></div>
-					</div>
-				</div>
-			)
+			var errorMessage = 'There was an error with Mile ' + errorArray[0];
 		}
+		else {
+			var errorMessage = 'There were errors with Miles' + errorArray.join(',');
+		}
+		return (
+			<FlashBannerContainer message={errorMessage} />
+		)
 	}
 	if ( isLoading === true ) {
 		return (

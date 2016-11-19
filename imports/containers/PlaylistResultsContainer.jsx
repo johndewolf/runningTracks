@@ -14,10 +14,7 @@ class PlaylistResultsContainer extends Component {
       errors: []
     };
   }
-  handleRemoveBanner(e) {
-    var banner = document.getElementById("warning-banner");
-    banner.parentNode.removeChild(banner);
-  }
+
   componentWillMount() {
     var app = this;
     if (store.getState().userReducer.loggedIn === false) {
@@ -64,8 +61,7 @@ class PlaylistResultsContainer extends Component {
       <PlaylistResults
         isLoading={this.state.isLoading}
         errors={this.state.errors}
-        spotifyData={this.props.spotifyData}
-        onRemoveBanner={this.handleRemoveBanner.bind(this)}/>
+        spotifyData={this.props.spotifyData} />
     )
   }
 }

@@ -5,12 +5,12 @@ const Home = ({onSpotifyLogin, username, loggedIn}) => {
   var button = <button type="button" className="btn margin-bottom margin-top" onClick={onSpotifyLogin}>Login with Spotify</button>
   }
   else if (loggedIn === true) {
-    var button = 
+    var button =
       <div>
         <Link to="/quick" className="btn margin-bottom margin-top">Create Playlist</Link>
       </div>
   }
-  
+
   return (
     <div className="container text-center">
       { loggedIn === true ? <h1>Welcome Back {username}</h1> : <h1>Welcome to runningTracks</h1> }
