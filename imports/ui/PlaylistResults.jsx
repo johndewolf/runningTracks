@@ -4,6 +4,7 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 import TracksTableContainer from '../containers/TracksTableContainer';
 import AlbumArt from './AlbumArt.jsx';
 import FlashBannerContainer from '../containers/FlashBannerContainer.jsx'
+import { LineChart } from 'react-d3';
 
 const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 	function millisToMinutesAndSeconds(millis) {
@@ -16,12 +17,15 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 			previousValue + track.duration_ms
 		)
 	}, 0)
+	let chartData = [];
 	let duration = 0;
 	spotifyData.forEach(function(track, i) {
 		if (track !== null) {
 			duration += track.duration_ms;
+			chartData.push({x: duration, y: i+1})
 		}
 	})
+	console.log(spotifyData);
 	function flashMessage(errorArray) {
 		if (errorArray.length === 1) {
 			var errorMessage = 'There was an error with Mile ' + errorArray[0];
@@ -51,6 +55,7 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 				{ errors.length > 0 ? flashMessage(errors) : null }
 				<div className="container">
 					<div className="flexcontainer-row">
+
 						<div className="flex-left">
 							<h1>RESULTS</h1>
 							<p>{spotifyData.length} tracks, {millisToMinutesAndSeconds(duration)}</p>

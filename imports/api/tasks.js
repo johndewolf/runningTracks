@@ -17,8 +17,11 @@ Meteor.methods({
 		var returnTracks = [];
 		var errorData = [];
 		formData.forEach(function(mile) {
-			min_tempo = mile.tempo.split('|')[0];
-			max_tempo = mile.tempo.split('|')[1];
+			var tempo = mile.tempo / 100;
+			min_tempo = tempo - 0.1  < 0 ? 0 : tempo - 0.1;
+			max_tempo = tempo - 0.1  > 1 ? 1 : tempo + 0.1;
+			console.log('min: ', min_tempo);
+			console.log ('max: ', max_tempo);
 			genre = mile.genre.replace(' ', '-');
 			timeRemaining = mile.time;
 			var tracks = getSpotifyData(timeRemaining, genre, min_tempo, max_tempo, mile.mile);

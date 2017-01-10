@@ -32,12 +32,17 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 						</div>
 					</div>
 					<div className="form-group">
-						<label htmlFor="tempo">Tempo</label>
-						<select name="tempo" id="tempo" className='dropDown' onChange={onUpdateTempo} >
-							<option value="0.1|0.2">Low</option>
-							<option value="0.4|0.7">Medium</option>
-							<option value="0.9|1">High</option>
-						</select>
+						<label htmlFor="tempo">Track Tempo</label>
+						<input
+							className='form-control'
+							type='range'
+							id="tempo"
+							defaultValue='50'
+							step='1'
+							min='1'
+							max='100'
+							required
+							onChange={onUpdateTempo} />
 					</div>
 					<div className="form-group">
 						<label htmlFor="length">Mile Time Length</label>
