@@ -13,13 +13,14 @@ class PlaylistFieldGroupContainer extends Component {
         if (result === 'error') {
           console.log('log in required')
         } else {
-          store.dispatch(addGenres(result))  
+          store.dispatch(addGenres(result))
         }
-        
+
       }
     })
   }
   handleTempoUpdate(e) {
+    console.log(e.target.value);
     store.dispatch(updateField({mile: this.props.mile, field: 'tempo',  value: e.target.value}))
   }
   handleGenreUpdate(e) {
@@ -32,8 +33,8 @@ class PlaylistFieldGroupContainer extends Component {
   handleDeleteFieldGroup() {
     store.dispatch(removeFieldGroup(this.props.mile));
   }
-  
-  render() {    
+
+  render() {
     return <PlaylistFieldGroup
         onUpdateTempo={this.handleTempoUpdate.bind(this)}
         onUpdateGenre={this.handleGenreUpdate.bind(this)}

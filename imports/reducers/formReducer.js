@@ -3,7 +3,7 @@ import * as types from '../actions/action-types.js';
 const initialState = [{
   mile: 1,
   genre: "",
-  tempo: "0.1|0.2",
+  tempo: "50",
   time: 480000
 }]
 
@@ -37,7 +37,7 @@ const formReducer = (state = initialState, action) => {
     return state.filter(function(group) {
       return group.mile !== action.mile
     })
-    
+
     case types.RESET_FIELDS:
       return initialState
     default:

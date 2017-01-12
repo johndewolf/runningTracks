@@ -10,10 +10,12 @@
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.1.0",
     "react-addons-pure-render-mixin": "^15.1.0",
+    "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.1.0",
     "react-motion": "^0.4.4",
     "react-redux": "^4.4.5",
     "react-router": "^2.0.1",
+    "react-vis": "^0.8.1",
     "redux": "^3.5.2"
   },
   "engines": {

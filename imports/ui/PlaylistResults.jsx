@@ -4,9 +4,8 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 import TracksTableContainer from '../containers/TracksTableContainer';
 import AlbumArt from './AlbumArt.jsx';
 import FlashBannerContainer from '../containers/FlashBannerContainer.jsx'
-import { LineChart } from 'react-d3';
 
-const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
+const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner, formData}) => {
 	function millisToMinutesAndSeconds(millis) {
 		  var minutes = Math.floor(millis / 60000);
 		  var seconds = ((millis % 60000) / 1000).toFixed(0);
@@ -22,10 +21,12 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 	spotifyData.forEach(function(track, i) {
 		if (track !== null) {
 			duration += track.duration_ms;
-			chartData.push({x: duration, y: i+1})
 		}
 	})
-	console.log(spotifyData);
+	formData.forEach(function(mile, i) {
+		chartData.push({x: i+1, y: mile.tempo});
+	})
+
 	function flashMessage(errorArray) {
 		if (errorArray.length === 1) {
 			var errorMessage = 'There was an error with Mile ' + errorArray[0];
@@ -49,6 +50,7 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 	}
 
 	else {
+		console.log(chartData);
 		return (
 
 			<div>
@@ -68,6 +70,18 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner}) => {
 					<div className="margin-top">
 						<ResultsFooterContainer />
 					</div>
+				</div>
+				<div className="container">
+					<XYPlot
+					  width={600}
+					  height={600}>
+					  <HorizontalGridLines />
+					  <LineSeries
+					    color="red"
+					    data={chartData}/>
+						<XAxis title="Miles" tickTotal={chartData.length}/>
+					  <YAxis tilte="Tempo" />
+					</XYPlot>
 				</div>
 			</div>
 		)
