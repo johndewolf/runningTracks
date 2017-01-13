@@ -17,7 +17,7 @@ const CreatePlaylist = (props) => {
     chartData.push({x: group.mile, y: group.tempo});
   })
 	return (
-		<div className="container">
+		<div className="container container-narrow">
 			<div className="row">
 				<div className="col-sm-6">
 					<h1>Playlist Details</h1>

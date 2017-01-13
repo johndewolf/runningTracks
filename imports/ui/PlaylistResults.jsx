@@ -55,7 +55,7 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner, formDa
 
 			<div>
 				{ errors.length > 0 ? flashMessage(errors) : null }
-				<div className="container">
+				<div className="container container-narrow">
 					<div className="flexcontainer-row">
 
 						<div className="flex-left">

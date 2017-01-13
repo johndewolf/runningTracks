@@ -32,7 +32,7 @@ nav.topNav {
   font-size: 0.75em;
 }
 
-.container {
+.container-narrow {
   width: 90%;
   max-width: 600px;
   margin: 2em auto 0 auto;
@@ -43,7 +43,7 @@ nav.topNav {
 
 }
 
-.container.md {
+.container-narrow.md {
   width: 90%;
   max-width: 800px;
   transition: all 0.5s ease;
