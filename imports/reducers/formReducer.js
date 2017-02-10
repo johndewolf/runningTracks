@@ -34,10 +34,13 @@ const formReducer = (state = initialState, action) => {
       })
       return (state.concat(newGroup))
     case types.REMOVE_FIELD_GROUP:
-    return state.filter(function(group) {
-      return group.mile !== action.mile
-    })
-
+      var filteredState =  state.filter(function(group) {
+        return group.mile !== action.mile
+      })
+      filteredState.forEach(function(group, index) {
+        group.mile = index + 1;
+      })
+      return filteredState;
     case types.RESET_FIELDS:
       return initialState
     default:
