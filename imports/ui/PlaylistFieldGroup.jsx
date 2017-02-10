@@ -24,10 +24,10 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateTime, onDelet
 				 <div style={{opacity: style.x, height: style.y}}>
 
 					<div className="row between-xs middle-xs">
-						<div className="col-xs-6">
+						<div className="col-xs-12 col-sm-12 col-md-6">
 						<h3>Mile {mile}</h3>
 						</div>
-						<div className="col-xs-6 text-right">
+						<div className="col-xs-12 col-sm-12 col-md-6 text-right">
 						{mile > 1 ? <i className="material-icons delete" onClick={onDeleteFieldGroup}>remove_circle</i> : null }
 						</div>
 					</div>

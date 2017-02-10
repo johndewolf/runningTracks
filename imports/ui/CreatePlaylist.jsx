@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import PlaylistFieldGroupContainer from '../containers/PlaylistFieldGroupContainer';
-import {curveCatmullRom} from 'd3-shape';
 import {
   XYPlot,
   XAxis,
@@ -13,13 +12,16 @@ const CreatePlaylist = (props) => {
 		return (<PlaylistFieldGroupContainer {...props} mile={group.mile} key={i} />);
 	})
   var chartData = [];
+  var durationData = []
   props.formGroups.forEach(function(group, i) {
     chartData.push({x: group.mile, y: group.tempo});
   })
+
+
 	return (
-		<div className="container container-narrow">
+		<div className="wrap container bg-white add-mile section-padding">
 			<div className="row">
-				<div className="col-sm-6">
+				<div className="col-xs-12 col-sm-12 col-md-6">
 					<h1>Playlist Details</h1>
 					<form onSubmit={props.onPlaylistSubmit}>
 						{formFields}
@@ -31,20 +33,18 @@ const CreatePlaylist = (props) => {
 				</div>
         <div className="col-sm-6">
           <XYPlot
-            width={600}
-            height={600}
-            yDomain={[0,100]}>
+            width={400}
+            height={400}
+            yDomain={[0,100]}
+            >
             <HorizontalGridLines />
             <VerticalGridLines />
             <XAxis title="Mile" />
             <YAxis title="Tempo" />
             <LineSeries
               className="first-series"
-              data={chartData}/>
-            <LineSeries
-              className="second-series"
-              data={null}
-              yDomain={[0, 100]} />
+              data={chartData}
+              curve={'curveMonotoneX'} />
           </XYPlot>
         </div>
 			</div>

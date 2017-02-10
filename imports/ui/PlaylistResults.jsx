@@ -16,15 +16,11 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner, formDa
 			previousValue + track.duration_ms
 		)
 	}, 0)
-	let chartData = [];
 	let duration = 0;
 	spotifyData.forEach(function(track, i) {
 		if (track !== null) {
 			duration += track.duration_ms;
 		}
-	})
-	formData.forEach(function(mile, i) {
-		chartData.push({x: i+1, y: mile.tempo});
 	})
 
 	function flashMessage(errorArray) {
@@ -50,7 +46,6 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner, formDa
 	}
 
 	else {
-		console.log(chartData);
 		return (
 
 			<div>
@@ -70,18 +65,6 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner, formDa
 					<div className="margin-top">
 						<ResultsFooterContainer />
 					</div>
-				</div>
-				<div className="container">
-					<XYPlot
-					  width={600}
-					  height={600}>
-					  <HorizontalGridLines />
-					  <LineSeries
-					    color="red"
-					    data={chartData}/>
-						<XAxis title="Miles" tickTotal={chartData.length}/>
-					  <YAxis tilte="Tempo" />
-					</XYPlot>
 				</div>
 			</div>
 		)

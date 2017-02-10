@@ -364,6 +364,32 @@ i.material-icons.delete:hover {
 #profile-dropdown:hover {
   background-color: #F1F1F1;
 }
+
+.bg-white {
+  background-color: white;
+}
+
+.add-mile {
+  margin-top: 2em;
+  border-radius: 4px;
+}
+
+.section-padding {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.rv-xy-plot {
+  display: block;
+  margin: 0 auto;
+}
+.add-mile .rv-xy-plot {
+  margin: 0 auto;
+  position: relative;
+  @media (min-width: 992px) {
+    position: fixed;
+  }
+}
 /*
 .example-appear {
   opacity: 0.01;

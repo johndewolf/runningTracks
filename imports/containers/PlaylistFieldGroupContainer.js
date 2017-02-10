@@ -20,7 +20,6 @@ class PlaylistFieldGroupContainer extends Component {
     })
   }
   handleTempoUpdate(e) {
-    console.log(e.target.value);
     store.dispatch(updateField({mile: this.props.mile, field: 'tempo',  value: e.target.value}))
   }
   handleGenreUpdate(e) {
