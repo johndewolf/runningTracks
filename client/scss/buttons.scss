@@ -1,0 +1,31 @@
+button, .btn {
+  padding: 1em 2em;
+  background-color: transparent;
+  box-shadow: none !important;
+  text-shadow: none;
+  border-radius: 2px;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: block;
+  font-size: 1em;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  border: 1px solid #3498db;
+  &:hover {
+    color:white;
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #3498db;
+  border: 1px solid #3498db;
+}
+
+button.warning:hover, .btn.warning:hover {
+  border-color: #ce0000;
+  color: #ce0000;
+}

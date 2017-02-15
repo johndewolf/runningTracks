@@ -1,0 +1,57 @@
+.bg-white {
+  background-color: white;
+}
+
+.margin-top {
+  margin-top: 1em;
+}
+.margin-bottom {
+  margin-bottom: 1em;
+}
+.margin-left {
+  margin-left: 1em;
+}
+.text-center {
+  text-align: center;
+}
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.flex-left {
+  justify-self: flex-start;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.centered-block {
+  margin: 0 auto;
+  display: block;
+}
+.flexcontainer-row {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-justify-content: flex-start;
+   justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .flex-right {
+    margin-left: auto;
+  }
+}
+
+.red-border {
+  border: 1px solid #ce0000;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}

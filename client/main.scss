@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Sintony:400,700);
 @import '{}/node_modules/react-vis/dist/main';
-
+@import 'scss/forms';
+@import 'scss/buttons';
 body {
   font-family: sans-serif;
   background-color: #F1F1F1;
@@ -49,114 +50,6 @@ nav.topNav {
   transition: all 0.5s ease;
 }
 
-select {
-  padding: 15px 10px;
-  border: 0;
-  margin-bottom: 10px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  text-transform: none;
-  background: transparent;
-  width: 100%;
-  max-width: 100%;
-  border-radius: 2px;
-  border: 1px solid #E0E0E0;
-}
-
-input[type=text] {
-  width: 100%;
-  padding: 12px 10px;
-  border-radius: 2px;
-  border: 1px solid #E0E0E0;
-}
-
-.dropDown::after {
-  content: '&or;';
-  display: block;
-  font-size: 24px;
-  height:20px;
-  width:20px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: black;
-}
-
-label, legend {
-  display: block;
-  margin: 12px 0;
-  padding: 0;
-}
-
-fieldset {
-  padding: 0;
-  border: none;
-  margin: 0;
-}
-
-
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 18px 0;
-  width: 100%;
-  max-width: 100%;
-}
-
-.label__inline {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: lighter;
-  margin-right: 12px;
-  margin-left: 4px;
-}
-
-input[type=number] {
-    padding: 12px 10px;
-    border-radius: 2px;
-    border: 1px solid #E0E0E0;
-
-}
-
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  max-width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #E0E0E0;
-  border-radius: 1.3px;
-}
-input[type=range]::-webkit-slider-thumb {
-  height: 24px;
-  width: 6px;
-  border-radius: 2px;
-  margin-top: -8px;
-  background: #3498db;
-  cursor: pointer;
-  -webkit-appearance: none;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  outline: none;
-}
-input[type=range]::-moz-range-track {
-  width: 100%;
-  max-width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #E0E0E0;
-  border-radius: 1.3px;
-}
-input[type=range]::-moz-range-thumb {
-  height: 24px;
-  width: 4px;
-  border-radius: 2px;
-  background: #3498db;
-  margin-top: -8px;
-}
 
 /*loading screen*/
 .load-container .circle {
@@ -200,41 +93,6 @@ tr:nth-child(even) {
 td, th {
   padding: 0.5em;
 }
-button, .btn {
-  padding: 1em 2em;
-  background-color: transparent;
-  box-shadow: none !important;
-  text-shadow: none;
-  border-radius: 2px;
-  transition: all 0.25s;
-  text-decoration: none;
-  display: block;
-  font-size: 1em;
-}
-
-.btn-primary {
-  background-color: #3498db;
-  color: white;
-  border: 1px solid #3498db;
-  &:hover {
-    color:white;
-  }
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: #3498db;
-  border: 1px solid #3498db;
-}
-
-button.warning:hover, .btn.warning:hover {
-  border-color: #ce0000;
-  color: #ce0000;
-}
-.fade-out {
-  opacity: 0;
-  transition: all 500ms ease-in-out;
-}
 
 button:hover, .btn:hover {
   border-radius: 8px;
@@ -255,10 +113,6 @@ i.material-icons.delete {
 
 i.material-icons.delete:hover {
   color: #ce0000;
-}
-
-.red-border {
-  border: 1px solid #ce0000;
 }
 
 .addMile {
@@ -292,53 +146,6 @@ i.material-icons.delete:hover {
   position: relative;
   top: 6px;
   margin-right: 6px;
-}
-
-/*Utility Classes*/
-.centered-block {
-  margin: 0 auto;
-  display: block;
-}
-.flexcontainer-row {
-   display: -webkit-flex;
-   display: flex;
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   -webkit-justify-content: flex-start;
-   justify-content: flex-start;
-}
-
-.flex-left {
-  justify-self: flex-start;
-}
-
-.text-right {
-  text-align: right;
-}
-
-
-@media (min-width: 768px) {
-  .flex-right {
-    margin-left: auto;
-  }
-}
-
-.margin-top {
-  margin-top: 1em;
-}
-.margin-bottom {
-  margin-bottom: 1em;
-}
-.margin-left {
-  margin-left: 1em;
-}
-.text-center {
-  text-align: center;
-}
-.centered {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
 }
 
 .album-images {
@@ -394,9 +201,6 @@ i.material-icons.delete:hover {
   background-color: #F1F1F1;
 }
 
-.bg-white {
-  background-color: white;
-}
 
 .add-mile {
   margin-top: 2em;
