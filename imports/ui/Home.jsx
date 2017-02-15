@@ -2,13 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router'
 const Home = ({onSpotifyLogin, username, loggedIn}) => {
   if (loggedIn === false) {
-  var button = <button type="button" className="btn margin-bottom margin-top" onClick={onSpotifyLogin}>Login with Spotify</button>
+  var button = <button type="button" className="btn btn-primary centered margin-bottom margin-top" onClick={onSpotifyLogin}>Login with Spotify</button>
   }
   else if (loggedIn === true) {
     var button =
-      <div>
-        <Link to="/quick" className="btn margin-bottom margin-top">Create Playlist</Link>
-      </div>
+        <Link to="/quick" className="btn btn-primary centered margin-bottom margin-top">Create Playlist</Link>
   }
 
   return (

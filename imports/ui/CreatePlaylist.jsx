@@ -22,12 +22,12 @@ const CreatePlaylist = (props) => {
 		<div className="wrap container bg-white add-mile section-padding">
 			<div className="row">
 				<div className="col-xs-12 col-sm-12 col-md-6">
-					<h1>Playlist Details</h1>
-					<form onSubmit={props.onPlaylistSubmit}>
+					<h1>Build Your Playlist</h1>
+					<form onSubmit={props.onPlaylistSubmit} className="build-playlist">
 						{formFields}
 
-						<div className="addMile" onClick={props.onAddFieldGroup}><i className="material-icons">add_circle_outline</i> <span>Add Mile</span></div>
-						<button type='button' type="submit" className='margin-top'>Generate Playlist</button>
+						<button className="addMile btn-secondary" onClick={props.onAddFieldGroup}><i className="material-icons">add_circle_outline</i> Add Mile</button>
+						<button type='button' type="submit" className='margin-top btn-primary'>Generate Playlist</button>
 					</form>
 
 				</div>

@@ -67,8 +67,7 @@ select {
 
 input[type=text] {
   width: 100%;
-  height: 45px;
-  padding: 5px 10px;
+  padding: 12px 10px;
   border-radius: 2px;
   border: 1px solid #E0E0E0;
 }
@@ -85,12 +84,17 @@ input[type=text] {
   color: black;
 }
 
-label {
+label, legend {
   display: block;
   margin: 12px 0;
-  font-weight: bolder;
+  padding: 0;
 }
 
+fieldset {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
 
 
 input[type=range] {
@@ -99,6 +103,22 @@ input[type=range] {
   width: 100%;
   max-width: 100%;
 }
+
+.label__inline {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: lighter;
+  margin-right: 12px;
+  margin-left: 4px;
+}
+
+input[type=number] {
+    padding: 12px 10px;
+    border-radius: 2px;
+    border: 1px solid #E0E0E0;
+
+}
+
 input[type=range]:focus {
   outline: none;
 }
@@ -185,13 +205,26 @@ button, .btn {
   background-color: transparent;
   box-shadow: none !important;
   text-shadow: none;
-  border: 1px solid #c1c0c0;
   border-radius: 2px;
   transition: all 0.25s;
   text-decoration: none;
-  color: black;
-  display: inline-block;
+  display: block;
   font-size: 1em;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  border: 1px solid #3498db;
+  &:hover {
+    color:white;
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #3498db;
+  border: 1px solid #3498db;
 }
 
 button.warning:hover, .btn.warning:hover {
@@ -204,10 +237,8 @@ button.warning:hover, .btn.warning:hover {
 }
 
 button:hover, .btn:hover {
-    border: 1px solid #3498db;
-    border-radius: 8px;
-    color: #3498db;
-    cursor: pointer; cursor: hand;
+  border-radius: 8px;
+  cursor: pointer; cursor: hand;
 }
 
 .flash-banner i.material-icons {
@@ -231,14 +262,8 @@ i.material-icons.delete:hover {
 }
 
 .addMile {
-  line-height: 1;
   margin-top: 1em;
-  font-size: 18px;
   margin-bottom: 1em;
-  padding: 0.5em 0;
-  cursor: pointer;
-  color: #3498db;
-  transition: background-color 0.35s;
 }
 
 .addMile i.material-icons {
@@ -247,9 +272,7 @@ i.material-icons.delete:hover {
   top: 1px;
   color: #3498db;
 }
-.addMile:hover {
-  background-color: #f1f1f1;
-}
+
 .results-footer {
   padding-left: 0;
   margin-top: 3em;
@@ -312,6 +335,12 @@ i.material-icons.delete:hover {
 .text-center {
   text-align: center;
 }
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .album-images {
   display: -webkit-flex;
   display: flex;
@@ -386,9 +415,31 @@ i.material-icons.delete:hover {
 .add-mile .rv-xy-plot {
   margin: 0 auto;
   position: relative;
+  margin-top: 24px;
   @media (min-width: 992px) {
+    margin-top: 72px;
     position: fixed;
   }
+}
+
+.build-playlist {
+  padding: 12px 20px;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+}
+
+.build-playlist h3 {
+  margin-top: 0;
+}
+
+.mile-group {
+  border-bottom: 3px solid #F1F1F1;
+  margin: 12px 0;
+  border-radius: 3px;
+}
+
+.mile-group:last-of-type {
+  border-bottom: none;
 }
 /*
 .example-appear {

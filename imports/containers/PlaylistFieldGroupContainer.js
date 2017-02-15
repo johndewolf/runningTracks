@@ -7,6 +7,14 @@ import { removeFieldGroup } from '../actions/user-actions';
 import { addGenres } from '../actions/user-actions';
 
 class PlaylistFieldGroupContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      minutes: 8,
+      seconds: 0
+    };
+  }
   componentWillMount() {
     Meteor.call('getGenreSeeds', function(error, result) {
       if (result) {
@@ -25,10 +33,20 @@ class PlaylistFieldGroupContainer extends Component {
   handleGenreUpdate(e) {
     store.dispatch(updateField({mile: this.props.mile, field: 'genre',  value: e.target.value}))
   }
-  handleTimeUpdate(e) {
-    store.dispatch(updateField({mile: this.props.mile, field: 'time',  value: e.target.value}))
+  handleMinutesUpdate(e) {
+    var timeInMilli = (e.target.value * 60 * 1000) + (this.state.seconds * 1000);
+    this.setState({
+      minutes: e.target.value
+    })
+    store.dispatch(updateField({mile: this.props.mile, field: 'time',  value: timeInMilli}))
   }
-
+  handleSecondsUpdate(e) {
+    var timeInMilli = (e.target.value * 1000) + (this.state.minutes * 60 * 1000);
+    this.setState({
+      seconds: e.target.value
+    })
+    store.dispatch(updateField({mile: this.props.mile, field: 'time',  value: timeInMilli}))
+  }
   handleDeleteFieldGroup() {
     store.dispatch(removeFieldGroup(this.props.mile));
   }
@@ -37,7 +55,8 @@ class PlaylistFieldGroupContainer extends Component {
     return <PlaylistFieldGroup
         onUpdateTempo={this.handleTempoUpdate.bind(this)}
         onUpdateGenre={this.handleGenreUpdate.bind(this)}
-        onUpdateTime={this.handleTimeUpdate.bind(this)}
+        onUpdateMinutes={this.handleMinutesUpdate.bind(this)}
+        onUpdateSeconds={this.handleSecondsUpdate.bind(this)}
         onDeleteFieldGroup={this.handleDeleteFieldGroup.bind(this)}
         availableGenres={this.props.availableGenres}
         mile={this.props.mile}
