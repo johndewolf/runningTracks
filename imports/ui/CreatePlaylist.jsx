@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import PlaylistFieldGroupContainer from '../containers/PlaylistFieldGroupContainer';
+import ChartPlaylistContainer from '../containers/ChartPlaylistContainer';
 import {
   XYPlot,
   XAxis,
@@ -32,20 +33,7 @@ const CreatePlaylist = (props) => {
 
 				</div>
         <div className="col-sm-6">
-          <XYPlot
-            width={400}
-            height={400}
-            yDomain={[0,100]}
-            >
-            <HorizontalGridLines />
-            <VerticalGridLines />
-            <XAxis title="Mile" />
-            <YAxis title="Tempo" />
-            <LineSeries
-              className="first-series"
-              data={chartData}
-              curve={'curveMonotoneX'} />
-          </XYPlot>
+          <ChartPlaylistContainer />
         </div>
 			</div>
 		</div>
