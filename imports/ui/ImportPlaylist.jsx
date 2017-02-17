@@ -24,7 +24,7 @@ const ImportPlaylist = ({onImportPlaylist, onNameUpdate, playlistName, spotifyDa
 			<form onSubmit={onImportPlaylist}>
 				<label htmlFor="playlist-name">Playlist Name</label>
 				<input onChange={onNameUpdate} name="playlist-name" type="text" required></input>
-				<button type="submit" className='btn margin-top'>Import</button>
+				<button type="submit" className='btn btn-primary margin-top'>Import</button>
 			</form>}
 		</div>
 	)

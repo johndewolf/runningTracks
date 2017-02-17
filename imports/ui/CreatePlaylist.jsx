@@ -12,13 +12,7 @@ const CreatePlaylist = (props) => {
 	var formFields = props.formGroups.map(function(group, i) {
 		return (<PlaylistFieldGroupContainer {...props} mile={group.mile} key={i} />);
 	})
-  var chartData = [];
-  var durationData = []
-  props.formGroups.forEach(function(group, i) {
-    chartData.push({x: group.mile, y: group.tempo});
-  })
-
-
+  
 	return (
 		<div className="wrap container bg-white add-mile section-padding">
 			<div className="row">
@@ -32,7 +26,7 @@ const CreatePlaylist = (props) => {
 					</form>
 
 				</div>
-        <div className="col-sm-6">
+        <div className="col-xs-12 col-sm-12 col-md-6">
           <ChartPlaylistContainer />
         </div>
 			</div>
