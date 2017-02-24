@@ -1,3 +1,4 @@
+import update from 'immutability-helper';
 import * as types from '../actions/action-types.js';
 
 const initialState = [{
@@ -25,8 +26,12 @@ const field = (state, action) => {
 const formReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_FIELD:
-      return state.map(t =>
-        field(t, action)
+      const fieldToUpdate = action.updateField.mile - 1;
+      return update(state,
+        { [fieldToUpdate] :
+          { [action.updateField.field] : { $set : action.updateField.value }
+          }
+        }
       )
     case types.ADD_FIELD_GROUP:
       var newGroup = Object.assign({}, initialState[0], {
