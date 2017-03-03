@@ -16,12 +16,8 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUp
 	}
 
 	return (
-				<Motion
-				  defaultStyle={{x: 0, y: 0}}
-				  style={{x: spring(1), y: spring(290)}}>
-				  {style =>
-
-				 <div style={{opacity: style.x, height: style.y}} className="mile-group">
+				<div>
+				 <div className="mile-group">
 					 <div className="row between-xs middle-xs">
 						 <div className="col-xs-12 col-sm-12 col-md-6">
 							 <h3>Mile {mile}</h3>
@@ -87,11 +83,8 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUp
 						<datalist id="genres">
 							{genreList}
 						</datalist>
+					</div>
 				</div>
-
-				  }
-				</Motion>
-
 				)
 }
 export default PlaylistFieldGroup

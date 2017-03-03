@@ -5,9 +5,18 @@ import { resetFields } from '../actions/user-actions';
 import { connect } from 'react-redux';
 import CreatePlaylist from '../ui/CreatePlaylist.jsx';
 class CreatePlaylistContainer extends Component {
-  //Next steps: move the state for these fields into redux store, remove the constructor, have the HOC pull state from redux store and update state
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeFieldGroup: 1
+    };
+  }
   componentDidMount() {
     store.dispatch(resetFields());
+    this.setState({
+      activeFieldGroup: 1
+    })
   }
   handlePlaylistSubmit(e) {
     e.preventDefault();
@@ -18,16 +27,20 @@ class CreatePlaylistContainer extends Component {
 
   handleAddFieldGroup(e) {
     var newMile = Object.keys(store.getState().formReducer).length + 1;
+    this.setState({
+      activeFieldGroup: this.state.activeFieldGroup += 1
+    })
     store.dispatch(addFieldGroup(newMile));
   }
-  
+
   render() {
     return (
       <div>
         <CreatePlaylist
         onPlaylistSubmit={this.handlePlaylistSubmit.bind(this)}
         onAddFieldGroup={this.handleAddFieldGroup.bind(this)}
-        formGroups={this.props.formGroups} />
+        formGroups={this.props.formGroups}
+        activeFieldGroup={this.state.activeFieldGroup}/>
       </div>
     )
   }

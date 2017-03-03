@@ -68,7 +68,7 @@ class PlaylistFieldGroupContainer extends Component {
 const mapStateToProps = function(store) {
   return {
     fieldGroups: store.formReducer,
-    availableGenres: store.genres
+    availableGenres: store.formBuilderReducer.genres
   }
 };
 
