@@ -6,15 +6,6 @@ import { userProfileSuccess } from '../actions/user-actions';
 import Home from '../ui/Home.jsx';
 
 class HomeContainer extends Component {
-
-  // componentWillMount() {
-  //   Meteor.call('checkAccessToken', function(error, result) {
-  //     if (result && result !== false) {
-  //         store.dispatch(userProfileSuccess(result.id))
-  //       }
-  //   });
-  // }
-
   handleSpotifyLogin() {
     var options = {
       showDialog: true,

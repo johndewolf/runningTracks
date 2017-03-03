@@ -6,14 +6,16 @@ const Home = ({onSpotifyLogin, username, loggedIn}) => {
   }
   else if (loggedIn === true) {
     var button =
-        <Link to="/quick" className="btn btn-primary centered margin-bottom margin-top">Create Playlist</Link>
+        <Link to="/quick" className="btn btn-primary margin-bottom margin-top">Create Playlist</Link>
   }
 
   return (
-    <div className="container container-narrow text-center">
-      { loggedIn === true ? <h1>Welcome Back {username}</h1> : <h1>Welcome to runningTracks</h1> }
-      <p>Click below to authorize your Spotify account</p>
-      {button}
+    <div className="container container-narrow">
+      { loggedIn === true ? <h1 className="text-center">Welcome Back {username}</h1> : <h1 className="text-center">Welcome to runningTracks</h1> }
+      <p>How it works: First you authorize your Spotify account. Then fill out the genre, tempo, and goal time for each mile that you plan to run.</p>
+      <p>runningTracks' algorithm will then generate the perfect playlist for your run. From there you can import it into your Spotify account or stream it right from the app.</p>
+      <p>Enjoy!</p>
+      <p className="text-center">{button}</p>
     </div>
   );
 }
