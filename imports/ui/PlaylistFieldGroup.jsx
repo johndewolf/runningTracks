@@ -1,20 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { Motion, spring } from 'react-motion';
-const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUpdateSeconds, onDeleteFieldGroup, genre, availableGenres, fieldGroups, mile, styles}) => {
+const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUpdateSeconds, onDeleteFieldGroup, genre, availableGenres, mile, styles, fieldGroups}) => {
 	var genreList = availableGenres.map(function(genre,i) {
 			return <option value={genre} key={i} />
 	})
-
-  var currentTime = fieldGroups.filter(function(group) {
-  	return group.mile === mile;
-  })[0].time;
-
+	var fieldData = fieldGroups[mile - 1]
   function millisToMinutesAndSeconds(millis) {
-	  var minutes = Math.floor(millis / 60000);
-	  var seconds = ((millis % 60000) / 1000).toFixed(0);
-	  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+	  return {minutes: Math.floor(millis / 60000), seconds: ((millis % 60000) / 1000).toFixed(0)}
 	}
-
+	var time = millisToMinutesAndSeconds(fieldData.time)
 	return (
 				<div>
 				 <div className="mile-group">
@@ -37,7 +31,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUp
 								 type='number'
 								 id="length"
 								 name="duration_min"
-								 defaultValue='8'
+								 value={time.minutes}
 								 min='4'
 								 max='60'
 								 required
@@ -48,7 +42,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUp
 								 placeholder='Goal Time'
 								 type='number'
 								 id="duration_secs"
-								 defaultValue='00'
+								 value={time.seconds}
 								 min='0'
 								 max='59'
 								 onChange={onUpdateSeconds}
@@ -63,10 +57,10 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUp
 								className='form-control'
 								type='range'
 								id="tempo"
-								defaultValue='50'
 								step='1'
 								min='1'
 								max='100'
+								value={fieldData.tempo}
 								required
 								onChange={onUpdateTempo} />
 						</div>
@@ -77,6 +71,7 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUp
 								className='form-control'
 								type='text'
 								list="genres"
+								value={fieldData.genre}
 								required
 								onChange={onUpdateGenre} />
 						</div>

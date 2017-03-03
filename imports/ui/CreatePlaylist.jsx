@@ -10,10 +10,6 @@ import {
   VerticalGridLines,
   LineSeries} from 'react-vis';
 const CreatePlaylist = (props) => {
-	var formFields = props.formGroups.map(function(group, i) {
-		return (<PlaylistFieldGroupContainer {...props} mile={group.mile} key={i} />);
-	})
-
 	return (
     <div>
       {props.hasError.length > 0 ? <FlashBannerContainer message={props.hasError}/> : null}

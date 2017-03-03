@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ChartPlaylist from '../ui/ChartPlaylist.jsx';
+import { updateActiveMile } from '../actions/user-actions';
 import store from '../store';
 import { connect } from 'react-redux';
 class ChartPlaylistContainer extends Component {
@@ -27,7 +28,9 @@ class ChartPlaylistContainer extends Component {
       message: null
     })
   }
-
+  handleValueClick(value) {
+    store.dispatch(updateActiveMile(value.x));
+  }
   render() {
     return (
     	<ChartPlaylist
@@ -35,6 +38,7 @@ class ChartPlaylistContainer extends Component {
       formData={this.props.formData}
       onRememberValue={this.handleRememberValue.bind(this)}
       onForgetValue={this.handleForgetValue.bind(this)}
+      onValueClick={this.handleValueClick.bind(this)}
       value={this.state.value}
       message={this.state.message} />
     );

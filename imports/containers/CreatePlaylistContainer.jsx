@@ -16,7 +16,7 @@ class CreatePlaylistContainer extends Component {
   handlePlaylistSubmit(e) {
     e.preventDefault();
 
-    let noGenre = this.props.formGroups.filter(function(group, i) {
+    let noGenre = store.getState().formReducer.filter(function(group, i) {
       return group.genre.length < 1 === true
     });
     if (noGenre.length === 0) {
@@ -45,7 +45,6 @@ class CreatePlaylistContainer extends Component {
         <CreatePlaylist
         onPlaylistSubmit={this.handlePlaylistSubmit.bind(this)}
         onAddFieldGroup={this.handleAddFieldGroup.bind(this)}
-        formGroups={this.props.formGroups}
         activeMile={this.props.activeMile}
         hasError={this.state.hasError}/>
       </div>
@@ -54,7 +53,6 @@ class CreatePlaylistContainer extends Component {
 }
 const mapStateToProps = function(store) {
   return {
-    formGroups: store.formReducer,
     activeMile: store.formBuilderReducer.activeMile
   };
 };

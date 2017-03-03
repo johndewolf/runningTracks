@@ -10,7 +10,7 @@ import {
   MarkSeries,
   LineSeries} from 'react-vis';
 
-const ChartPlaylist = ({spotifyData, formData, onRememberValue, onForgetValue, value, message}) => {
+const ChartPlaylist = ({spotifyData, formData, onRememberValue, onForgetValue, onValueClick, value, message}) => {
 
   var formattedData = []
   formData.forEach(function(group, i) {
@@ -35,6 +35,7 @@ const ChartPlaylist = ({spotifyData, formData, onRememberValue, onForgetValue, v
         <MarkSeries
           onValueMouseOver={onRememberValue}
           onValueMouseOut={onForgetValue}
+          onValueClick={onValueClick}
           data={formattedData} />
           {value ?
           <Hint value={ value } >
