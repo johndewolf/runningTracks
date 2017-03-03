@@ -72,7 +72,6 @@ const PlaylistFieldGroup = ({onUpdateTempo, onUpdateGenre, onUpdateMinutes, onUp
 								type='text'
 								list="genres"
 								value={fieldData.genre}
-								required
 								onChange={onUpdateGenre} />
 						</div>
 						<datalist id="genres">

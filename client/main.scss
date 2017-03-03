@@ -245,6 +245,11 @@ i.material-icons.delete:hover {
 .mile-group:last-of-type {
   border-bottom: none;
 }
+
+svg circle {
+  cursor: pointer;
+}
+
 /*
 .example-appear {
   opacity: 0.01;
