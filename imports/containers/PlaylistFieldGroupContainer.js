@@ -3,6 +3,7 @@ import store from '../store';
 import { connect } from 'react-redux';
 import PlaylistFieldGroup from '../ui/PlaylistFieldGroup.jsx';
 import { updateField } from '../actions/user-actions';
+import { updateActiveMile } from '../actions/user-actions';
 import { removeFieldGroup } from '../actions/user-actions';
 import { addGenres } from '../actions/user-actions';
 
@@ -49,6 +50,7 @@ class PlaylistFieldGroupContainer extends Component {
   }
   handleDeleteFieldGroup() {
     store.dispatch(removeFieldGroup(this.props.mile));
+    store.dispatch(updateActiveMile(this.props.mile - 1));
   }
 
   render() {
@@ -68,7 +70,8 @@ class PlaylistFieldGroupContainer extends Component {
 const mapStateToProps = function(store) {
   return {
     fieldGroups: store.formReducer,
-    availableGenres: store.formBuilderReducer.genres
+    availableGenres: store.formBuilderReducer.genres,
+    activeMile: store.formBuilderReducer.activeMile
   }
 };
 

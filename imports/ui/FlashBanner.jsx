@@ -5,8 +5,8 @@ const FlashBanner = ({message, onRemoveBanner}) => {
 	return (
     <div className="container container-narrow flash-banner red-border" id="warning-banner">
       <div className="row">
-        <div className="col-xs-6">{message}</div>
-        <div className="col-xs-6 text-right"><i className="material-icons" onClick={onRemoveBanner}>close</i></div>
+        <div className="col-xs-11">{message}</div>
+        <div className="col-xs-1 text-right"><i className="material-icons" onClick={onRemoveBanner}>close</i></div>
       </div>
     </div>
 	)

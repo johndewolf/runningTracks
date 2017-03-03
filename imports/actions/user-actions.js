@@ -49,6 +49,13 @@ export const addGenres = (genres) => {
   }
 }
 
+export const updateActiveMile = (mile) => {
+  return {
+    type: types.UPDATE_ACTIVE_MILE,
+    mile
+  }
+}
+
 export const updateField = (updateField) => {
   return {
     type: types.UPDATE_FIELD,

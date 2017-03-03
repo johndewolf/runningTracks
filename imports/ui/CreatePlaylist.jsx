@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import PlaylistFieldGroupContainer from '../containers/PlaylistFieldGroupContainer';
 import ChartPlaylistContainer from '../containers/ChartPlaylistContainer';
+import FlashBannerContainer from '../containers/FlashBannerContainer.jsx'
 import {
   XYPlot,
   XAxis,
@@ -9,24 +10,31 @@ import {
   VerticalGridLines,
   LineSeries} from 'react-vis';
 const CreatePlaylist = (props) => {
+	var formFields = props.formGroups.map(function(group, i) {
+		return (<PlaylistFieldGroupContainer {...props} mile={group.mile} key={i} />);
+	})
+
 	return (
-		<div className="wrap container bg-white add-mile section-padding">
-			<div className="row">
-				<div className="col-xs-12 col-sm-12 col-md-6">
-					<h1>Build Your Playlist</h1>
-					<form onSubmit={props.onPlaylistSubmit} className="build-playlist">
-						<PlaylistFieldGroupContainer {...props} mile={props.activeFieldGroup} key={props.activeFieldGroup} />
+    <div>
+      {props.hasError.length > 0 ? <FlashBannerContainer message={props.hasError}/> : null}
+  		<div className="wrap container bg-white add-mile section-padding">
+  			<div className="row">
+  				<div className="col-xs-12 col-sm-12 col-md-6">
+  					<h1>Build Your Playlist</h1>
+  					<form onSubmit={props.onPlaylistSubmit} className="build-playlist">
+  						<PlaylistFieldGroupContainer {...props} mile={props.activeMile} key={props.activeMile} />
 
-						<a className="addMile btn btn-secondary" onClick={props.onAddFieldGroup}><i className="material-icons">add_circle_outline</i> Add Mile</a><br />
-						<button type='button' type="submit" className='margin-top btn-primary'>Generate Playlist</button>
-					</form>
+  						<a className="addMile btn btn-secondary" onClick={props.onAddFieldGroup}><i className="material-icons">add_circle_outline</i> Add Mile</a><br />
+  						<button type='button' type="submit" className='margin-top btn-primary'>Generate Playlist</button>
+  					</form>
 
-				</div>
-        <div className="col-xs-12 col-sm-12 col-md-6">
-          <ChartPlaylistContainer />
-        </div>
-			</div>
-		</div>
+  				</div>
+          <div className="col-xs-12 col-sm-12 col-md-6">
+            <ChartPlaylistContainer />
+          </div>
+  			</div>
+  		</div>
+    </div>
 	)
 }
 /*
