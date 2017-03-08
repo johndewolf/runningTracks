@@ -5,6 +5,7 @@ import { updateActiveMile } from '../actions/user-actions';
 import { resetFields } from '../actions/user-actions';
 import { connect } from 'react-redux';
 import CreatePlaylist from '../ui/CreatePlaylist.jsx';
+import Link from 'react-router'
 class CreatePlaylistContainer extends Component {
   constructor(props) {
     super(props);
@@ -19,9 +20,16 @@ class CreatePlaylistContainer extends Component {
     let noGenre = store.getState().formReducer.filter(function(group, i) {
       return group.genre.length < 1 === true
     });
-    if (noGenre.length === 0) {
+    let loggedIn = store.getState().userReducer.loggedIn;
+
+    if (noGenre.length === 0 && loggedIn === true) {
       this.context.router.push({
         pathname: '/quick/results'
+      })
+    }
+    else if (store.getState().userReducer.loggedIn === false) {
+      this.setState({
+        hasError: "You must authorize your account to generate. Return to the homepage."
       })
     }
     else {
