@@ -2,13 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import PlaylistFieldGroupContainer from '../containers/PlaylistFieldGroupContainer';
 import ChartPlaylistContainer from '../containers/ChartPlaylistContainer';
 import FlashBannerContainer from '../containers/FlashBannerContainer.jsx'
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
-  VerticalGridLines,
-  LineSeries} from 'react-vis';
+
 const CreatePlaylist = (props) => {
 	return (
     <div>

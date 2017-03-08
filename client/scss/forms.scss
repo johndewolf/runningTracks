@@ -107,3 +107,11 @@ input[type=range]::-moz-range-thumb {
   background: #3498db;
   margin-top: -8px;
 }
+.switch {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid #79C7E3;
+  color: #79C7E3;
+  border-radius: 10px;
+  cursor: pointer;
+}

@@ -220,10 +220,6 @@ i.material-icons.delete:hover {
   margin: 0 auto;
   position: relative;
   margin-top: 24px;
-  @media (min-width: 992px) {
-    margin-top: 72px;
-    position: fixed;
-  }
 }
 
 .build-playlist {

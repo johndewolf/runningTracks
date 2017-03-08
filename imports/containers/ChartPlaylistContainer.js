@@ -8,13 +8,13 @@ class ChartPlaylistContainer extends Component {
     super(props);
     this.state = {
       value: null,
-      message: null
+      message: null,
+      showTempo: true
     };
   }
 
   handleRememberValue(value) {
     var genre = this.props.formData[value.x - 1].genre;
-
     if (genre) {
       this.setState({
         value: value,
@@ -28,6 +28,11 @@ class ChartPlaylistContainer extends Component {
       message: null
     })
   }
+  handleChartToggle() {
+    this.setState({
+      showTempo: !this.state.showTempo
+    })
+  }
   handleValueClick(value) {
     store.dispatch(updateActiveMile(value.x));
   }
@@ -39,7 +44,9 @@ class ChartPlaylistContainer extends Component {
       onRememberValue={this.handleRememberValue.bind(this)}
       onForgetValue={this.handleForgetValue.bind(this)}
       onValueClick={this.handleValueClick.bind(this)}
+      onChartToggle={this.handleChartToggle.bind(this)}
       value={this.state.value}
+      showTempo={this.state.showTempo}
       message={this.state.message} />
     );
   }
