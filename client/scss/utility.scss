@@ -41,10 +41,8 @@
    justify-content: flex-start;
 }
 
-@media (min-width: 768px) {
-  .flex-right {
-    margin-left: auto;
-  }
+.flex-right {
+  margin-left: auto;
 }
 
 .red-border {

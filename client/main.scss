@@ -16,14 +16,25 @@ body {
 
 nav.topNav {
   background: white;
-  padding: 1em;
+  padding: 1em 0.25em;
   font-size: 2em;
   border-bottom: 1px solid #E2DADA;
+  @media (min-width: 768px) {
+    padding: 1em;
+  }
 }
+
+
 
 .topNav a {
   text-decoration: none;
   color: #444242;
+}
+
+@media (max-width: 768px) {
+  .username_text {
+    display: none;
+  }
 }
 
 .nav-links {

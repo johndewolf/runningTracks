@@ -17,13 +17,13 @@ const NavBar = ({loggedIn, username, onLogout}) => {
 
 		<nav className="topNav flexcontainer-row">
 			<div className="flex-left">
-				<Link to="/">rT</Link>
+				<Link to="/">runningTracks</Link>
 			</div>
 
-			{loggedIn === true ? 
+			{loggedIn === true ?
 			<div className="flex-right">
 				<ul className="nav-links">
-					<li><a href="#" className="username" id='profile-toggle' onClick={toggleLogout}><i className="material-icons account-icon">account_circle</i>{username} <i className="material-icons" id="toggle-icon">arrow_drop_down</i></a></li>
+					<li><a href="#" className="username" id='profile-toggle' onClick={toggleLogout}><i className="material-icons account-icon">account_circle</i><span className="username_text">{username}</span><i className="material-icons" id="toggle-icon">arrow_drop_down</i></a></li>
 					<li id="profile-dropdown" onClick={onLogout} style={{display: 'none'}}><a href="#">Logout</a></li>
 				</ul>
 			</div>
