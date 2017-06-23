@@ -29,7 +29,7 @@ class NavBarContainer extends Component {
 const mapStateToProps = function(store) {
   return {
     loggedIn: store.userReducer.loggedIn,
-    username: store.userReducer.username.userProfile
+    username: store.userReducer.username
   };
 };
 export default connect(mapStateToProps)(NavBarContainer);

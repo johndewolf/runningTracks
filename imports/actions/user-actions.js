@@ -14,6 +14,13 @@ export const userLogout = (loggedIn) => {
   };
 }
 
+export const displayFlashBanner = (bool) => {
+  return {
+    type: types.DISPLAY_FLASH_BANNER,
+    bool
+  };
+}
+
 export const getTracks = (tracks) => {
   return {
     type: types.GET_TRACKS,

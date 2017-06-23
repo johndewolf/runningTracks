@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import PlaylistFieldGroupContainer from '../containers/PlaylistFieldGroupContainer';
-import ChartPlaylistContainer from '../containers/ChartPlaylistContainer';
+import PlaylistFieldGroupContainer from '../containers/PlaylistFieldGroupContainer'
+import ChartPlaylistContainer from '../containers/ChartPlaylistContainer'
 import FlashBannerContainer from '../containers/FlashBannerContainer.jsx'
-
+import CreatePlaylistMilesNav from '../containers/CreatePlaylistMilesNavContainer'
 const CreatePlaylist = (props) => {
 	return (
     <div>
-      {props.hasError.length > 0 ? <FlashBannerContainer message={props.hasError}/> : null}
+      { props.displayFlashBanner ? <FlashBannerContainer message={props.hasError} displayError={true} /> : null}
   		<div className="wrap container bg-white add-mile section-padding">
   			<div className="row">
   				<div className="col-xs-12 col-sm-12 col-md-6">

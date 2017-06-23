@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import store from '../store';
-import { addFieldGroup } from '../actions/user-actions';
-import { updateActiveMile } from '../actions/user-actions';
-import { resetFields } from '../actions/user-actions';
+import { addFieldGroup, updateActiveMile, resetFields, displayFlashBanner } from '../actions/user-actions';
 import { connect } from 'react-redux';
 import CreatePlaylist from '../ui/CreatePlaylist.jsx';
 import Link from 'react-router'
@@ -28,12 +26,14 @@ class CreatePlaylistContainer extends Component {
       })
     }
     else if (store.getState().userReducer.loggedIn === false) {
+      store.dispatch(displayFlashBanner(true))
       this.setState({
         hasError: "You must authorize your account to generate. Return to the homepage."
       })
     }
     else {
       let miles = noGenre.map(group => group.mile);
+      store.dispatch(displayFlashBanner(true))
       this.setState({
         hasError: "The following mile(s) require a genre: " + miles.join(',')
       })
@@ -54,14 +54,16 @@ class CreatePlaylistContainer extends Component {
         onPlaylistSubmit={this.handlePlaylistSubmit.bind(this)}
         onAddFieldGroup={this.handleAddFieldGroup.bind(this)}
         activeMile={this.props.activeMile}
-        hasError={this.state.hasError}/>
+        hasError={this.state.hasError}
+        displayFlashBanner={this.props.displayFlashBanner} />
       </div>
     )
   }
 }
 const mapStateToProps = function(store) {
   return {
-    activeMile: store.formBuilderReducer.activeMile
+    activeMile: store.formBuilderReducer.activeMile,
+    displayFlashBanner: store.userReducer.displayFlashBanner
   };
 };
 
