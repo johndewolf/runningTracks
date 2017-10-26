@@ -4,7 +4,7 @@ import ImportPlaylistContainer from '../containers/ImportPlaylistContainer';
 import ChartPlaylistContainer from '../containers/ChartPlaylistContainer';
 import StreamPlaylistContainer from '../containers/StreamPlaylistContainer';
 
-const ResultsFooter = ({onShowImport, showImport, showStream, onShowChart, showChart, onShowStream}) => {
+const ResultsFooter = ({onShowImport, showImport, showStream, onShowChart, showChart, onShowStream, formData}) => {
 	function footerElements() {
 		return (
 			<ul className="results-footer">
@@ -35,7 +35,7 @@ const ResultsFooter = ({onShowImport, showImport, showStream, onShowChart, showC
 	else if (showChart === true) {
 		return (
 			<div>
-				<ChartPlaylistContainer />
+				<ChartPlaylistContainer formData={formData} />
 				{footerElements()}
 			</div>
 		)

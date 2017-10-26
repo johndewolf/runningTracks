@@ -43,7 +43,8 @@ class ResultsFooterContainer extends Component {
         onShowChart={this.handleShowChart.bind(this)}
         showImport={this.state.showImport}
         showChart={this.state.showChart}
-        showStream={this.state.showStream} />
+        showStream={this.state.showStream}
+        formData={this.props.formData} />
     );
   }
 }

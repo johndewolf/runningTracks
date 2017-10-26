@@ -63,7 +63,7 @@ const PlaylistResults = ({spotifyData, isLoading, errors, onRemoveBanner, formDa
 					</div>
 					<TracksTableContainer />
 					<div className="margin-top">
-						<ResultsFooterContainer />
+						<ResultsFooterContainer formData={formData} />
 					</div>
 				</div>
 			</div>
