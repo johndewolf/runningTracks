@@ -5,6 +5,10 @@
 .margin-top {
   margin-top: 1em;
 }
+
+.margin-top__auto {
+  margin-top: auto;
+}
 .margin-bottom {
   margin-bottom: 1em;
 }
@@ -40,7 +44,10 @@
    -webkit-justify-content: flex-start;
    justify-content: flex-start;
 }
-
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
 .flex-right {
   margin-left: auto;
 }

@@ -29,3 +29,15 @@ button.warning:hover, .btn.warning:hover {
   border-color: #ce0000;
   color: #ce0000;
 }
+
+
+.mile-button {
+  color: #3498db;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 20px;
+  &:hover {
+    color: rgb(18, 147, 154);
+
+  }
+}

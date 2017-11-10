@@ -12,7 +12,9 @@ class ChartPlaylistContainer extends Component {
       showTempo: true
     };
   }
-
+  componentWillReceiveProps() {
+    console.log('updating CHART')
+  }
   handleRememberValue(value) {
     var genre = this.props.formData[value.x - 1].genre;
     if (genre) {
@@ -53,9 +55,7 @@ class ChartPlaylistContainer extends Component {
 }
 const mapStateToProps = function(store) {
   return {
-    formData: store.formReducer,
     spotifyData: store.playlistReducer.spotifyData,
-
   };
 };
 

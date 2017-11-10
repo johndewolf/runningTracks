@@ -4,6 +4,7 @@ import ChartPlaylistContainer from '../containers/ChartPlaylistContainer'
 import FlashBannerContainer from '../containers/FlashBannerContainer.jsx'
 import CreatePlaylistMilesNav from '../containers/CreatePlaylistMilesNavContainer'
 const CreatePlaylist = (props) => {
+	console.log(props)
 	return (
     <div>
       { props.displayFlashBanner ? <FlashBannerContainer message={props.hasError} displayError={true} /> : null}
@@ -15,12 +16,12 @@ const CreatePlaylist = (props) => {
   						<PlaylistFieldGroupContainer {...props} mile={props.activeMile} key={props.activeMile} />
 
   						<a className="addMile btn btn-secondary" onClick={props.onAddFieldGroup}><i className="material-icons">add_circle_outline</i> Add Mile</a><br />
-  						<button type='button' type="submit" className='margin-top btn-primary'>Generate Playlist</button>
+							<button type='button' type="submit" className='margin-top btn-primary'>Generate Playlist</button>
   					</form>
-
   				</div>
-          <div className="col-xs-12 col-sm-12 col-md-6">
-            <ChartPlaylistContainer />
+          <div className="col-xs-12 col-sm-12 col-md-6 flex-column">
+            <ChartPlaylistContainer formData={props.formData} />
+						<CreatePlaylistMilesNav formData={props.formData} activeMile={props.activeMile} />
           </div>
   			</div>
   		</div>

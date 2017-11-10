@@ -19,7 +19,6 @@ class CreatePlaylistContainer extends Component {
       return group.genre.length < 1 === true
     });
     let loggedIn = store.getState().userReducer.loggedIn;
-
     if (noGenre.length === 0 && loggedIn === true) {
       this.context.router.push({
         pathname: '/quick/results'
@@ -55,7 +54,8 @@ class CreatePlaylistContainer extends Component {
         onAddFieldGroup={this.handleAddFieldGroup.bind(this)}
         activeMile={this.props.activeMile}
         hasError={this.state.hasError}
-        displayFlashBanner={this.props.displayFlashBanner} />
+        displayFlashBanner={this.props.displayFlashBanner}
+        formData={this.props.formData} />
       </div>
     )
   }
@@ -63,7 +63,8 @@ class CreatePlaylistContainer extends Component {
 const mapStateToProps = function(store) {
   return {
     activeMile: store.formBuilderReducer.activeMile,
-    displayFlashBanner: store.userReducer.displayFlashBanner
+    displayFlashBanner: store.userReducer.displayFlashBanner,
+    formData: store.formReducer
   };
 };
 

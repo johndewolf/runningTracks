@@ -62,16 +62,14 @@ class PlaylistFieldGroupContainer extends Component {
         onDeleteFieldGroup={this.handleDeleteFieldGroup.bind(this)}
         availableGenres={this.props.availableGenres}
         mile={this.props.mile}
-        fieldGroups={this.props.fieldGroups}
+        fieldGroups={this.props.formData}
         styles={this.props.styles} />
   }
 };
 
 const mapStateToProps = function(store) {
   return {
-    fieldGroups: store.formReducer,
-    availableGenres: store.formBuilderReducer.genres,
-    activeMile: store.formBuilderReducer.activeMile
+    availableGenres: store.formBuilderReducer.genres
   }
 };
 
